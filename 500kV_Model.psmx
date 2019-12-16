@@ -8,13 +8,7 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating network and source code 'D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\Main.f'.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating 'D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\500kV_Model.map'.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 156ms  Make: 16ms]]></message>
-    <message status="normal" label="build">
-      <Wire scope="500kV_Model" name="TLine_1" status="normal" link="666132939" /><![CDATA[Solving right-of-way coupling using 'D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\TLine1.tli'.]]></message>
-    <message status="normal" label="build">
-      <Wire scope="500kV_Model" name="TLine_1" status="normal" link="1925078133" /><![CDATA[Solving right-of-way coupling using 'D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\TLine2.tli'.]]></message>
-    <message status="normal" label="build">
-      <Wire scope="500kV_Model" name="TLine_1" status="normal" link="1212516905" /><![CDATA[Solving right-of-way coupling using 'D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\TLine3.tli'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 1407ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 16ms]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: call D:\Program Files (x86)\Intel\ComposerXE-2011\bin\ifortvars.bat  ia32]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: nmake -f 500kV_Model.mak]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: D:\学习\科研项目\10仿真~1\A01_test\test03\500KV_~1.IF1\\500KV_~1.BAT]]></message>
@@ -26,11 +20,6 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Setting environment for using Microsoft Visual Studio 2010 x86 tools.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Microsoft (R) 程序维护实用工具 10.00.30319.01 版]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[版权所有(C) Microsoft Corporation。保留所有权利。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source 'Station.f' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source 'Main.f' into object code.]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[warning #6717: This name has not been given an explicit type.   [INB]]]><File url="D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\500kV_Model.if12\\Main.f" /></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[&_24,RT_25,INB,RT_27,TIME,RT_28,RT_29,RT_30)]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[----------------^]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\学习\科研项目\10仿真建模保护部分\A01_test\test03\\code\fortran2c.f"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[ifort.exe /nologo /c /free /real_size:64 /fpconstant /warn:declarations /iface:default /align:dcommons /fpe:0 /include:D:\PROGRA~1\PSCAD45\emtdc\if12\inc /include:D:\PROGRA~1\PSCAD45\emtdc\if12 /include:D:\PROGRA~1\PSCAD45\emtdc\if12\windows /O1   "fortran2c.f"]]></message>
@@ -66,7 +55,7 @@
     </netlist>
   </emt>
   <views>
-    <view name="Main" zoomlevel="6" scrollx="142" scrolly="288" />
+    <view name="Main" zoomlevel="6" scrollx="645" scrolly="216" />
   </views>
   <catalog>
     <group name="(No Label)">

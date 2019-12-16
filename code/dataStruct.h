@@ -1,7 +1,8 @@
 // 数据窗总长(包括记忆量)
 #define WINDOW 1600
 // 每周波采样点数
-#define POINTS 400
+#define POINTS 400.0
+#define PI 3.1415926
 
 /*
 * 相量

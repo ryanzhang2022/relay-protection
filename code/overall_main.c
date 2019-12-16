@@ -1,4 +1,5 @@
 #include "..\\code\\dataStruct.h"
+#include <math.h>
 
 // 定义全局变量
 Device lineDevice01, lineDevice02;
@@ -15,7 +16,19 @@ void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, d
     
     line(&lineDevice01);
     
-    *p1 = lineDevice01.relayFlag[0];
+    // 以下代码块为测试代码
+    {
+        double x;
+        double y;
+        double res;
+        
+        x = lineDevice01.phasor[3].real;
+        y = lineDevice01.phasor[3].img;
+        res = sqrt(x*x + y*y);
+        
+        *p1 = res;    
+
+    }
 }
 
 
