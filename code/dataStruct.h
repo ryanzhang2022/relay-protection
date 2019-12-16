@@ -1,10 +1,10 @@
-// Êý¾Ý´°×Ü³¤(°üÀ¨¼ÇÒäÁ¿)
+// æ•°æ®çª—æ€»é•¿(åŒ…æ‹¬è®°å¿†é‡)
 #define WINDOW 1600
-// Ã¿ÖÜ²¨²ÉÑùµãÊý
+// æ¯å‘¨æ³¢é‡‡æ ·ç‚¹æ•°
 #define POINTS 400
 
 /*
-* ÏàÁ¿
+* ç›¸é‡
 */
 typedef struct Phasor {
     double real;
@@ -12,18 +12,18 @@ typedef struct Phasor {
 } Phasor;
 
 
-/* ±£»¤×°ÖÃÍ¨ÓÃµÄÊý¾Ý½á¹¹--È«¾Ö±äÁ¿
-* sample, ±¾´Î12Í¨µÀ²ÉÑùÖµ
-* instVma, instVmbµÈÊý×é: Ë²Ê±ÖµÊý×é
-* phasor ±¾´ÎÏàÁ¿¼ÆËã½á¹û
-* setValueÊý×é: Í¨ÓÃÕû¶¨ÖµÊý×é,¾ßÌåÃ¿Ò»¸öÔªËØËù´ú±íµÄµÄÕû¶¨Öµº¬Òå¼û¸÷¸ö±£»¤µÄËµÃ÷
-* relayTimeÊý×é, Í¨ÓÃÑÓÊ±Êý×é 
-* relayFlagÊý×é, Í¨ÓÃÌøÕ¢±ê¼Ç
+/* ä¿æŠ¤è£…ç½®é€šç”¨çš„æ•°æ®ç»“æž„--å…¨å±€å˜é‡
+* sample, æœ¬æ¬¡12é€šé“é‡‡æ ·å€¼
+* instVma, instVmbç­‰æ•°ç»„: çž¬æ—¶å€¼æ•°ç»„
+* phasor æœ¬æ¬¡ç›¸é‡è®¡ç®—ç»“æžœ
+* setValueæ•°ç»„: é€šç”¨æ•´å®šå€¼æ•°ç»„,å…·ä½“æ¯ä¸€ä¸ªå…ƒç´ æ‰€ä»£è¡¨çš„çš„æ•´å®šå€¼å«ä¹‰è§å„ä¸ªä¿æŠ¤çš„è¯´æ˜Ž
+* relayTimeæ•°ç»„, é€šç”¨å»¶æ—¶æ•°ç»„ 
+* relayFlagæ•°ç»„, é€šç”¨è·³é—¸æ ‡è®°
 */
 typedef struct Device {
     double sample[12];
     
-    // Ö»ÐèÒª±£ÁôÉÙÁ¿ÀúÊ·Êý¾ÝÓÃÓÚÂË²¨¼´¿É
+    // åªéœ€è¦ä¿ç•™å°‘é‡åŽ†å²æ•°æ®ç”¨äºŽæ»¤æ³¢å³å¯
     double instVma[10];
     double instVmb[10];
     double instVmc[10];

@@ -1,4 +1,4 @@
-! ÏßÂ·1--P²à
+! çº¿è·¯1--Pä¾§
 SUBROUTINE F_LINE_1_P(vma, vmb, vmc, ima, imb, imc, vna, vnb, vnc, ina, inb, inc, time, p1, p2, p3)
 
 REAL vma, vmb, vmc, ima, imb, imc, vna, vnb, vnc, ina, inb, inc, time, p1, p2, p3
@@ -21,7 +21,7 @@ END
 
 
 
-! ÏßÂ·1--Q²à
+! çº¿è·¯1--Qä¾§
 SUBROUTINE F_LINE_1_Q(vma, vmb, vmc, ima, imb, imc, vna, vnb, vnc, ina, inb, inc, time, p1, p2, p3)
 
 REAL vma, vmb, vmc, ima, imb, imc, vna, vnb, vnc, ina, inb, inc, time, p1, p2, p3

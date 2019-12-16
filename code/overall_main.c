@@ -1,13 +1,13 @@
 #include "..\\code\\dataStruct.h"
 
-// 定义全局变量
+// 瀹氫箟鍏ㄥ眬鍙橀噺
 Device lineDevice01, lineDevice02;
 
-// 声明采样函数(主函数中只保留这一个子函数!)
+// 澹版槑閲囨牱鍑芥暟(涓诲嚱鏁颁腑鍙繚鐣欒繖涓�涓瓙鍑芥暟!)
 void sample(Device* device, double, double, double, double, double, double, double, double, double, double, double, double);
 
-// 声明各类保护函数
-extern double line(Device*); // 线路保护
+// 澹版槑鍚勭被淇濇姢鍑芥暟
+extern double line(Device*); // 绾胯矾淇濇姢
 
 
 void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* time, double* p1, double* p2, double* p3) {
@@ -28,7 +28,7 @@ void line_1_q(double* vma, double* vmb, double* vmc, double* ima, double* imb, d
 }
 
 
-// ----------------采样函数----------------------
+// ----------------閲囨牱鍑芥暟----------------------
 void sample(Device* device, double vma, double vmb, double vmc, double ima, double imb, double imc, double vna, double vnb, double vnc, double ina, double inb, double inc) {
     device->sample[0] = vma;
     device->sample[1] = vmb;
