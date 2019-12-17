@@ -1,4 +1,4 @@
-
+// common
 
 void sample2inst(Device*);
 
