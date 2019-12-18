@@ -9,7 +9,14 @@ void toPhasor(Device*);
 void overCurrentStart(Device* device);
 
 double absPhasor(Phasor p);
-
 Phasor phasorAdd(Phasor pa, Phasor pb);
 Phasor phasorSub(Phasor, Phasor);
 Phasor phasorMulti(double a, Phasor p);
+
+void lowPassFilter(double* aft, double* bef);
+
+void inst2phasor(double* inst, int start, Phasor* phasor);
+int singlePhaseStart(double* inst);
+
+
+

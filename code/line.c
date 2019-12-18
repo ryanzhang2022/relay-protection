@@ -24,9 +24,16 @@ void line(Device* device) {
 
     // 距离保护 A相
 
+
     if (device->startFlag[0] == 1) {
         distanceRelay(device, 0);
     }
+
+
+    // 根据各保护动作情况,打印日志信息
+
+    // 综合各保护动作情况,对overallTripFlag置位
+
 
     
     

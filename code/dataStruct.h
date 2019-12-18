@@ -1,7 +1,9 @@
-// 数据窗总长(包括记忆量)
-#define WINDOW 1600
 // 每周波采样点数
-#define POINTS 400.0
+#define POINTS 48
+
+// 数据窗总长(包括记忆量) 4个周波
+#define WINDOW 192 
+
 #define PI 3.1415926
 
 /*
@@ -22,7 +24,11 @@ typedef struct Phasor {
 * relayFlag数组, 通用跳闸标记
 */
 typedef struct Device {
+    double time;
     double sample[12];
+    // 断路器状态采样,合位为1,断开为0
+    int brkSample[3];
+    int sampleCount;
     
     // 只需要保留少量历史数据用于滤波即可
     double instVma[10];
@@ -51,17 +57,21 @@ typedef struct Device {
     double filterInb[WINDOW];
     double filterInc[WINDOW];
     
-    int startFlag[10];
-    int distanceTimeRelay[6];
-
+    int startFlag[3];
     Phasor phasor[12];
-    double setValue[20];
-    int relayTime[20];
-    int tripFlag[20];
+
+    int distanceTimeCount[6];
+    int overCurrentTimeCount[6];
+
+    double overCurrentSetValue[20];
+    double overCurrentTimeSetValue[20];
+
+    int distanceTripFlag[3];
+    int overCurrentTripFlag[3];
+
+    int overallTripFlag[3];
 
     int temp;
-
-    
-    
+   
 } Device;
 

@@ -5,14 +5,15 @@ void distanceRelay(Device* device, int phase) {
     int* timeCount;
     int* tripFlag;
     // 整定值
+    
     double Z1set = 20.0, Z2set = 70, Z3set = 300.0; 
 
     Phasor U, I;
     Phasor x, y;
 
 
-    timeCount = &device->distanceTimeRelay[phase];
-    tripFlag = &device->tripFlag[phase];
+    timeCount = &device->distanceTimeCount[phase];
+    tripFlag = &device->distanceTripFlag[phase];
     U = device->phasor[0+phase];
     I = device->phasor[3+phase];
 
@@ -25,7 +26,7 @@ void distanceRelay(Device* device, int phase) {
     y = phasorMulti(0.5*Z1set, I);
 
     
-    if (*timeCount > 10 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 2 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
     }
 
@@ -35,7 +36,7 @@ void distanceRelay(Device* device, int phase) {
     y = phasorMulti(0.5*Z2set, I);
 
 
-    if (*timeCount > 500 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 48 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
     }
 
@@ -46,8 +47,9 @@ void distanceRelay(Device* device, int phase) {
 
 
 
-    if (*timeCount > 1000 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 150 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
     }
+
     
 }

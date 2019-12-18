@@ -4,17 +4,25 @@
 // 定义全局变量
 Device lineDevice01, lineDevice02;
 
+
 // 声明采样函数(主函数中只保留这一个子函数!)
-void sample(Device* device, double, double, double, double, double, double, double, double, double, double, double, double);
+void sample(Device* device, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double);
 
 // 声明各类保护函数
 extern double line(Device*); // 线路保护
 
 
-void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* time, double* p1, double* p2, double* p3) {
-    sample(&lineDevice01, *vma, *vmb, *vmc, *ima, *imb, *imc, *vna, *vnb, *vnc, *ina, *inb, *inc);
+void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* ka, double* kb, double* kc, double* time, double* p1, double* p2, double* p3) {
+   
     
-    line(&lineDevice01);
+    // 仿真程序跑10次, 进行一次采样
+    lineDevice01.sampleCount++;
+    if (lineDevice01.sampleCount == 10) {
+        lineDevice01.sampleCount = 0;
+         sample(&lineDevice01, *vma, *vmb, *vmc, *ima, *imb, *imc, *vna, *vnb, *vnc, *ina, *inb, *inc, *ka, *kb, *kc, *time);
+         line(&lineDevice01);
+    }
+    
     
     // 以下代码块为测试代码
     {
@@ -26,7 +34,9 @@ void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, d
         y = lineDevice01.phasor[3].img;
         res = sqrt(x*x + y*y);
         
-        *p1 = lineDevice01.tripFlag[0];    
+        *p1 = lineDevice01.distanceTripFlag[0]; 
+        *p2 = lineDevice01.brkSample[0];   
+        *p3 = lineDevice01.time;
 
     }
 }
@@ -34,15 +44,17 @@ void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, d
 
 
 
-void line_1_q(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* time, double* p1, double* p2, double* p3) {
+void line_1_q(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* ka, double* kb, double* kc, double* time, double* p1, double* p2, double* p3) {
     
 
-    *p1 = 12;
 }
 
 
 // ----------------采样函数----------------------
-void sample(Device* device, double vma, double vmb, double vmc, double ima, double imb, double imc, double vna, double vnb, double vnc, double ina, double inb, double inc) {
+void sample(Device* device, double vma, double vmb, double vmc, double ima, double imb, double imc, double vna, double vnb, double vnc, double ina, double inb, double inc, double ka, double kb, double kc, double time) {
+    // 更新装置时间
+    device->time = time;
+    
     device->sample[0] = vma;
     device->sample[1] = vmb;
     device->sample[2] = vmc;
@@ -55,6 +67,13 @@ void sample(Device* device, double vma, double vmb, double vmc, double ima, doub
     device->sample[9] = ina;
     device->sample[10] = inb;
     device->sample[11] = inc;
+
+    // 采样值合位为0, 开位为2 --转换为--> 合位状态为1,开位状态为0
+    device->brkSample[0] = (int)((2-ka)/2);
+    device->brkSample[1] = (int)((2-kb)/2);
+    device->brkSample[2] = (int)((2-kc)/2);
+
+    
 }
 
 

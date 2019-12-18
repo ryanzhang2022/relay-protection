@@ -1,17 +1,14 @@
 #include <math.h>
-#include "..\\code\\dataStruct.h"
 #include <stdio.h>
+#include "..\\code\\dataStruct.h"
+#include "..\\code\\common.h"
 
-void lowPassFilter(double* aft, double* bef);
-void inst2phasor(double* inst, int start, Phasor* phasor);
-int singlePhaseStart(double* inst);
-Phasor phasorSub(Phasor, Phasor);
-double absPhasor(Phasor p);
 
 
 void sample2inst(Device* device) {
     int i = 0;
-
+    
+    // 更新数据    
     for (i = 9; i >= 1; i--) {
         device->instVma[i] = device->instVma[i-1];
         device->instVmb[i] = device->instVmb[i-1];
@@ -41,7 +38,7 @@ void sample2inst(Device* device) {
     device->instIna[0] = device->sample[9];
     device->instInb[0] = device->sample[10];
     device->instInc[0] = device->sample[11];
-        
+    
 }
 
 void dataFilter(Device* device) {
@@ -109,10 +106,10 @@ void toPhasor(Device* device) {
  * 参数分别为滤波后数组和滤波前数组
  */
 void lowPassFilter(double* aft, double* bef) {
-    // 滤波参数直接给出,使用bufferFilter.m计算得到
-    double at = 5.3717e-04;
-    double bt = -1.9334;
-    double ct = 0.93553;
+    // 滤波参数直接给出,使用bufferFilter.m计算得到 此处为48点采样,100hz截止频率
+    double at = 0.014401;
+    double bt = -1.632993;
+    double ct = 0.690599;
 
     aft[0] = at*bef[0] + 2*at*bef[1] + at*bef[2] - bt*aft[1] - ct*aft[2];
 }
@@ -128,13 +125,13 @@ void inst2phasor(double* inst, int start, Phasor* phasor) {
     
 
     for (i = start; i < start + POINTS; i++) {
-        phasor->real += inst[i]*sin(2*PI*i/POINTS);
-        phasor->img  += inst[i]*cos(2*PI*i/POINTS);
+        phasor->real += inst[i]*sin(2*PI*i/(double)POINTS);
+        phasor->img  += inst[i]*cos(2*PI*i/(double)POINTS);
     }
     
     // C语言语法规则: 2/400等于零!
-    phasor->real = phasor->real * (2/POINTS);
-    phasor->img =  phasor->img * (2/POINTS);  
+    phasor->real = phasor->real * (2/(double)POINTS);
+    phasor->img =  phasor->img * (2/(double)POINTS);  
 }
 
 
@@ -165,7 +162,7 @@ int singlePhaseStart(double* inst) {
     double amp;
 
     inst2phasor(inst, 0, &phasorNow);
-    inst2phasor(inst, 1200, &phasorBefore);
+    inst2phasor(inst, 3*POINTS, &phasorBefore);
     
     phasorDelta = phasorSub(phasorNow, phasorBefore);
 
