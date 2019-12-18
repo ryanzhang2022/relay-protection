@@ -21,7 +21,7 @@
     <param name="Warn" value="0" />
     <param name="Check" value="0" />
     <param name="description" value="500kV_Model" />
-    <param name="revisor" value="Swordsman, 1576501844" />
+    <param name="revisor" value="Swordsman, 1576592546" />
     <param name="startup_filename" value="" />
     <param name="labels" value="" />
   </paramlist>
@@ -267,7 +267,7 @@
         <segment name="Computations"><![CDATA[]]></segment>
       </script>
     </Definition>
-    <Definition classid="RowDefn" name="TLine_1" group="" url="" version="" build="" crc="59256287" instances="3" key="" view="false" date="1576496068">
+    <Definition classid="RowDefn" name="TLine_1" group="" url="" version="" build="" crc="59256287" instances="3" key="" view="false" date="1576592524">
       <paramlist name="">
         <param name="Description" value="" />
         <param name="type" value="TLine" />
@@ -353,7 +353,7 @@
         </User>
       </schematic>
     </Definition>
-    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="5421413" instances="1" key="" view="false">
+    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="40459388" instances="1" key="" view="false">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -375,20 +375,20 @@
           <User classid="UserCmp" name="good500kV:Main" id="1548514214" x="0" y="0" w="0" h="0" z="-1" orient="0" defn="500kV_Model:Main" link="1548514214">
             <paramlist link="-1" name="" />
             <paramlist link="1381153294" name="">
-              <param name="xmin" value="0.495" />
-              <param name="xmax" value="0.535" />
+              <param name="xmin" value="0" />
+              <param name="xmax" value="1.2" />
             </paramlist>
             <paramlist link="714029799" name="">
-              <param name="ymin" value="-2.5" />
-              <param name="ymax" value="2" />
+              <param name="ymin" value="-4" />
+              <param name="ymax" value="4" />
             </paramlist>
             <paramlist link="550323436" name="">
               <param name="ymin" value="-500" />
               <param name="ymax" value="500" />
             </paramlist>
             <paramlist link="879103642" name="">
-              <param name="ymin" value="-3" />
-              <param name="ymax" value="3" />
+              <param name="ymin" value="-4" />
+              <param name="ymax" value="4" />
             </paramlist>
             <paramlist link="1415306550" name="">
               <param name="ymin" value="-500" />
@@ -436,11 +436,11 @@
             </paramlist>
             <paramlist link="1765006528" name="">
               <param name="xmin" value="0" />
-              <param name="xmax" value="0.4" />
+              <param name="xmax" value="0.7" />
             </paramlist>
             <paramlist link="1889554384" name="">
-              <param name="ymin" value="0.1" />
-              <param name="ymax" value="0.325" />
+              <param name="ymin" value="-50" />
+              <param name="ymax" value="350" />
             </paramlist>
             <paramlist link="228007921" name="">
               <param name="xmin" value="0" />
@@ -454,7 +454,7 @@
         </Wire>
       </schematic>
     </Definition>
-    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="14444682" instances="1" key="" view="false" date="1576500521">
+    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="14812229" instances="1" key="" view="false" date="1576500521">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -607,7 +607,7 @@
             <param name="Ic" value="" />
           </paramlist>
         </User>
-        <User classid="UserCmp" name="" defn="master:multimeter" id="1025964915" x="1044" y="144" w="56" h="94" z="20" orient="4" link="-1">
+        <User classid="UserCmp" name="" defn="master:multimeter" id="1025964915" x="1044" y="144" w="58" h="94" z="20" orient="4" link="-1">
           <paramlist link="-1" name="">
             <param name="MeasI" value="1" />
             <param name="MeasV" value="1" />
@@ -628,9 +628,9 @@
             <param name="Ph" value="" />
             <param name="hide1" value="1" />
             <param name="hide2" value="1" />
-            <param name="Pd" value="603.1" />
-            <param name="Qd" value="-119" />
-            <param name="Vd" value="510.1" />
+            <param name="Pd" value="922.5" />
+            <param name="Qd" value="-68.65" />
+            <param name="Vd" value="500" />
           </paramlist>
         </User>
         <User classid="UserCmp" name="" defn="master:multimeter" id="601861665" x="684" y="144" w="58" h="94" z="10" orient="0" link="-1">
@@ -654,9 +654,9 @@
             <param name="Ph" value="" />
             <param name="hide1" value="1" />
             <param name="hide2" value="1" />
-            <param name="Pd" value="-593.2" />
-            <param name="Qd" value="-79.98" />
-            <param name="Vd" value="505.4" />
+            <param name="Pd" value="-914.4" />
+            <param name="Qd" value="63.74" />
+            <param name="Vd" value="499.6" />
           </paramlist>
         </User>
         <Wire classid="WireOrthogonal" name="" x="612" y="144" w="26" h="8" orient="0">
@@ -809,7 +809,7 @@
             <paramlist link="-1" name="">
               <param name="title" value="" />
               <param name="units" value="" />
-              <param name="gridvalue" value="0.500000" />
+              <param name="gridvalue" value="1.000000" />
               <param name="yintervalue" value="0.000000" />
               <param name="grid" value="true" />
               <param name="ticks" value="false" />
@@ -1213,7 +1213,7 @@
             <paramlist link="-1" name="">
               <param name="Name" value="TLine1" />
               <param name="Freq" value="50.0 [Hz]" />
-              <param name="Length" value="250 [km]" />
+              <param name="Length" value="10 [km]" />
               <param name="Dim" value="3" />
               <param name="Mode" value="1" />
               <param name="CoupleEnab" value="0" />
@@ -1332,7 +1332,7 @@
                 <row><![CDATA[0,0,0,0,0,0,0,0,-1,-1]]></row>
                 <row><![CDATA[0,0,0,0,0,0,0,0,0,-1]]></row>
               </param>
-              <param name="Date" value="1576496068" />
+              <param name="Date" value="0" />
             </paramlist>
           </User>
         </Wire>
@@ -1345,7 +1345,7 @@
             <paramlist link="-1" name="">
               <param name="Name" value="TLine2" />
               <param name="Freq" value="50.0 [Hz]" />
-              <param name="Length" value="50 [km]" />
+              <param name="Length" value="90 [km]" />
               <param name="Dim" value="3" />
               <param name="Mode" value="1" />
               <param name="CoupleEnab" value="0" />
@@ -1464,7 +1464,7 @@
                 <row><![CDATA[0,0,0,0,0,0,0,0,-1,-1]]></row>
                 <row><![CDATA[0,0,0,0,0,0,0,0,0,-1]]></row>
               </param>
-              <param name="Date" value="1576496068" />
+              <param name="Date" value="1576592251" />
             </paramlist>
           </User>
         </Wire>
@@ -1862,7 +1862,7 @@ p3：纵联保护出口]]></Sticky>
             <paramlist link="-1" name="">
               <param name="title" value="" />
               <param name="units" value="" />
-              <param name="gridvalue" value="0.025000" />
+              <param name="gridvalue" value="50.000000" />
               <param name="yintervalue" value="0.000000" />
               <param name="grid" value="true" />
               <param name="ticks" value="false" />
@@ -1881,7 +1881,7 @@ p3：纵联保护出口]]></Sticky>
               <param name="ymax" value="1" />
             </paramlist>
             <Curve classid="Curve" name="p1" link="1109700450" color="0" bold="0" show="255" mode="0" />
-            <Curve classid="Curve" name="I1" link="2022845773" color="0" bold="0" show="248" mode="0" />
+            <Curve classid="Curve" name="I1" link="2022845773" color="0" bold="0" show="249" mode="0" />
             <Curve classid="Curve" name="p2" link="229447419" color="0" bold="1" show="254" mode="0" />
           </Graph>
         </Frame>
@@ -2226,10 +2226,11 @@ p3：纵联保护出口]]></Sticky>
             <param name="Min" value="-2.0" />
           </paramlist>
         </User>
+        <FileCmp classid="FileCmp" x="864" y="450" w="72" h="54" name="code\distanceRelay.c" />
       </schematic>
     </Definition>
   </definitions>
-  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/16" time="21:10:04.000000">
+  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/17" time="22:22:03.000000">
     <paramlist />
     <domain name="Time" unit="s" mult="0.0" skew="0.0">
       <sample rate="10000.0" end="10000" />

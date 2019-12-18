@@ -51,10 +51,17 @@ typedef struct Device {
     double filterInb[WINDOW];
     double filterInc[WINDOW];
     
+    int startFlag[10];
+    int distanceTimeRelay[6];
+
     Phasor phasor[12];
     double setValue[20];
-    double relayTime[20];
-    int relayFlag[20];
+    int relayTime[20];
+    int tripFlag[20];
+
+    int temp;
+
+    
     
 } Device;
 

@@ -26,7 +26,7 @@ void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, d
         y = lineDevice01.phasor[3].img;
         res = sqrt(x*x + y*y);
         
-        *p1 = res;    
+        *p1 = lineDevice01.tripFlag[0];    
 
     }
 }

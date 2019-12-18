@@ -1,8 +1,13 @@
 #include <math.h>
 #include "..\\code\\dataStruct.h"
+#include <stdio.h>
 
 void lowPassFilter(double* aft, double* bef);
 void inst2phasor(double* inst, int start, Phasor* phasor);
+int singlePhaseStart(double* inst);
+Phasor phasorSub(Phasor, Phasor);
+double absPhasor(Phasor p);
+
 
 void sample2inst(Device* device) {
     int i = 0;
@@ -129,7 +134,82 @@ void inst2phasor(double* inst, int start, Phasor* phasor) {
     
     // C语言语法规则: 2/400等于零!
     phasor->real = phasor->real * (2/POINTS);
-    phasor->img =  phasor->img * (2/POINTS);
+    phasor->img =  phasor->img * (2/POINTS);  
+}
 
+
+/**
+ * 过电流启动判据
+ * 突变量整定值为20A
+ */
+void overCurrentStart(Device* device) {
+    // 避免突变量消失后, 启动标志位被置1
+    // A相
+    if (device->startFlag[0] == 0 && singlePhaseStart(device->filterIma) == 1) {
+        device->startFlag[0] = 1;
+    } 
+
+    // B相
+    if (device->startFlag[1] == 0 && singlePhaseStart(device->filterImb) == 1) {
+        device->startFlag[1] = 1;
+    } 
+
+    // C相
+    if (device->startFlag[2] == 0 && singlePhaseStart(device->filterImc) == 1) {
+        device->startFlag[2] = 1;
+    }      
+}
+
+int singlePhaseStart(double* inst) {
+    Phasor phasorNow, phasorBefore, phasorDelta;
+    double amp;
+
+    inst2phasor(inst, 0, &phasorNow);
+    inst2phasor(inst, 1200, &phasorBefore);
     
+    phasorDelta = phasorSub(phasorNow, phasorBefore);
+
+    amp = absPhasor(phasorDelta);
+
+
+    // 突变量整定值为20A
+    if (amp > 2.0) {
+        return 1;
+    } else {
+        return 0;
+    }
+    
+}
+
+double absPhasor(Phasor p) {
+    return sqrt(p.real*p.real + p.img*p.img);
+}
+
+Phasor phasorAdd(Phasor pa, Phasor pb) {
+    Phasor p;
+
+    p.real = pa.real + pb.real;
+    p.img = pa.img + pb.img;
+
+    return p;
+}
+
+Phasor phasorSub(Phasor pa, Phasor pb) {
+    Phasor p;
+
+    p.real = pa.real - pb.real;
+    p.img = pa.img - pb.img;
+
+    return p;
+}
+
+
+/**
+ * 计算常数与相量乘积
+ */
+Phasor phasorMulti(double a, Phasor p) {
+    p.real *= a;
+    p.img *= a;
+
+    return p;
 }
