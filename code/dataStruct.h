@@ -1,10 +1,14 @@
-// 每周波采样点数
+﻿// 每周波采样点数
 #define POINTS 48
 
 // 数据窗总长(包括记忆量) 4个周波
 #define WINDOW 192 
 
 #define PI 3.1415926
+
+#define MAXSIZE 655350
+
+
 
 /*
 * 相量
@@ -24,6 +28,7 @@ typedef struct Phasor {
 * relayFlag数组, 通用跳闸标记
 */
 typedef struct Device {
+    char* deviceName;
     double time;
     double sample[12];
     // 断路器状态采样,合位为1,断开为0
@@ -57,21 +62,30 @@ typedef struct Device {
     double filterInb[WINDOW];
     double filterInc[WINDOW];
     
+    // 保护启动标志
     int startFlag[3];
+    // 相量实时计算值
     Phasor phasor[12];
 
+    // 延时计数
     int distanceTimeCount[6];
     int overCurrentTimeCount[6];
 
+    // 整定值
     double overCurrentSetValue[20];
     double overCurrentTimeSetValue[20];
 
+    // 保护动作标志
     int distanceTripFlag[3];
     int overCurrentTripFlag[3];
 
+    // 跳闸动作标志
     int overallTripFlag[3];
 
     int temp;
+
+    // 日志标志位
+    int loggerFlag[MAXSIZE];
    
 } Device;
 

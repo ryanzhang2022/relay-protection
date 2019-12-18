@@ -5,58 +5,7 @@
       <Definition scope="500kV_Model" name="Station" status="warning" link="66" /><![CDATA[Definition 'Station' has an invalid crc value, it may be corrupt.]]></message>
     <message status="warning" label="validation">
       <Definition scope="500kV_Model" name="Main" status="warning" link="63" /><![CDATA[Definition 'Main' has an invalid crc value, it may be corrupt.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating network and source code 'D:\文档\Github\relay-protection\500kV_Model.if12\Main.f'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating 'D:\文档\Github\relay-protection\500kV_Model.if12\500kV_Model.map'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 187ms  Make: 16ms]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 31ms]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: call D:\Program Files (x86)\Intel\ComposerXE-2011\bin\ifortvars.bat  ia32]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: nmake -f 500kV_Model.mak]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: D:\文档\Github\RELAY-~1\500KV_~1.IF1\\500KV_~1.BAT]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Creating EMTDC executable...]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[D:\文档\Github\relay-protection\500kV_Model.if12>call D:\PROGRA~1\Intel\COMPOS~1\bin\IFORTV~1.BAT  ia32 ]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Intel(R) Parallel Studio XE 2011]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Copyright (C) 1985-2011 Intel Corporation. All rights reserved.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Intel(R) Composer XE 2011 Update 5 (package 221)]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Setting environment for using Microsoft Visual Studio 2010 x86 tools.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Microsoft (R) 程序维护实用工具 10.00.30319.01 版]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[版权所有(C) Microsoft Corporation。保留所有权利。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source 'Main.f' into object code.]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[warning #6717: This name has not been given an explicit type.   [INB]]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\Main.f" /></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[&,INB,RT_12,REAL(brk1a),REAL(brk1b),REAL(brk1c),TIME,RT_13,RT_14,RT&]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[-------^]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\fortran2c.f"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[ifort.exe /nologo /c /free /real_size:64 /fpconstant /warn:declarations /iface:default /align:dcommons /fpe:0 /include:D:\PROGRA~1\PSCAD45\emtdc\if12\inc /include:D:\PROGRA~1\PSCAD45\emtdc\if12 /include:D:\PROGRA~1\PSCAD45\emtdc\if12\windows /O1   "fortran2c.f"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "fortran2c.f"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\overall_main.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "overall_main.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[overall_main.c]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[overall_main.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[d:\文档\github\relay-protection\500kv_model.if12\..\\code\\dataStruct.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "overall_main.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\line.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "line.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[line.c]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[line.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[d:\文档\github\relay-protection\500kv_model.if12\..\\code\\dataStruct.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "line.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\common.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "common.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[common.c]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[common.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[d:\文档\github\relay-protection\500kv_model.if12\..\\code\\dataStruct.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "common.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\distanceRelay.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "distanceRelay.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[distanceRelay.c]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[distanceRelay.c : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[d:\文档\github\relay-protection\500kv_model.if12\..\\code\\dataStruct.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "distanceRelay.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Linking object code and libraries into binary '500kV_Model.exe']]></message>
+    <message status="error" label="runtime" scope="500kV_Model"><![CDATA[The simulation has errors and has terminated!]]></message>
   </messagelist>
   <emt>
     <netlist name="Station" call_count="1" ss_count="0">
@@ -72,7 +21,7 @@
     </netlist>
   </emt>
   <views>
-    <view name="Main" zoomlevel="6" scrollx="609" scrolly="288" />
+    <view name="Main" zoomlevel="6" scrollx="609" scrolly="432" />
   </views>
   <catalog>
     <group name="(No Label)">

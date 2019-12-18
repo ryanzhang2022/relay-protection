@@ -1,4 +1,4 @@
-#include "..\\code\\dataStruct.h"
+﻿#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
 void distanceRelay(Device* device, int phase) {
@@ -28,6 +28,7 @@ void distanceRelay(Device* device, int phase) {
     
     if (*timeCount > 2 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
+        writePhaseLog(device, "%c相距离保护I段动作", phase);
     }
 
  
@@ -38,6 +39,7 @@ void distanceRelay(Device* device, int phase) {
 
     if (*timeCount > 48 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
+        writePhaseLog(device, "%c相距离保护II段动作", phase);
     }
 
 
@@ -49,6 +51,7 @@ void distanceRelay(Device* device, int phase) {
 
     if (*timeCount > 150 && (absPhasor(x) - absPhasor(y)) < 0 ) {
         *tripFlag = 1;
+        writePhaseLog(device, "%c相距离保护III段动作", phase);
     }
 
     

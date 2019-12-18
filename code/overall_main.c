@@ -1,8 +1,11 @@
-#include "..\\code\\dataStruct.h"
+﻿#include "..\\code\\dataStruct.h"
+#include "..\\code\common.h"
 #include <math.h>
 
 // 定义全局变量
-Device lineDevice01, lineDevice02;
+Device lineDevice01;
+Device lineDevice02;
+
 
 
 // 声明采样函数(主函数中只保留这一个子函数!)
@@ -13,7 +16,16 @@ extern double line(Device*); // 线路保护
 
 
 void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* ka, double* kb, double* kc, double* time, double* p1, double* p2, double* p3) {
-   
+    // 设置装置名
+    if (lineDevice01.temp == 0) {
+        lineDevice01.temp = 1;
+        lineDevice01.deviceName = "线路1-P";
+    }
+    
+    // 初始化日志
+    writeLog(&lineDevice01, "装置初始化");
+
+
     
     // 仿真程序跑10次, 进行一次采样
     lineDevice01.sampleCount++;

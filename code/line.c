@@ -1,4 +1,4 @@
-#include "..\\code\\dataStruct.h"
+﻿#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
 extern distanceRelay(Device* device, int phase);
@@ -31,6 +31,7 @@ void line(Device* device) {
 
 
     // 根据各保护动作情况,打印日志信息
+
 
     // 综合各保护动作情况,对overallTripFlag置位
 

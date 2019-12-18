@@ -1,5 +1,9 @@
-#include <math.h>
+﻿#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <windows.h>
 #include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
@@ -144,16 +148,19 @@ void overCurrentStart(Device* device) {
     // A相
     if (device->startFlag[0] == 0 && singlePhaseStart(device->filterIma) == 1) {
         device->startFlag[0] = 1;
+        writeLog(device, "A相过电流启动元件动作");
     } 
 
     // B相
     if (device->startFlag[1] == 0 && singlePhaseStart(device->filterImb) == 1) {
         device->startFlag[1] = 1;
+        writeLog(device, "B相过电流启动元件动作");
     } 
 
     // C相
     if (device->startFlag[2] == 0 && singlePhaseStart(device->filterImc) == 1) {
         device->startFlag[2] = 1;
+        writeLog(device, "C相过电流启动元件动作");
     }      
 }
 
@@ -210,3 +217,126 @@ Phasor phasorMulti(double a, Phasor p) {
 
     return p;
 }
+
+/**
+ * 日志模块 
+ * 参考 C语言实现写入日志文件 https://blog.csdn.net/sunlion81/article/details/8647028
+ */
+
+/*
+
+/*
+写入日志文件
+@param filename [in]: 日志文件名
+@param buffer [in]: 日志内容
+@param buf_size [in]: 日志内容大小
+@return 空
+*/
+void writeLog(Device* device, char* content) {
+    // 获取当前时间作为日志文件名
+    // 每隔5分钟更新文件名
+    unsigned int hashCode;
+    time_t rawtime;
+    struct tm* timeinfo;
+    char filename[40];
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    sprintf(filename, "..\\\\log\\\\%04d-%02d-%02d_%02d-%02d.txt",
+        (timeinfo->tm_year+1900), timeinfo->tm_mon, timeinfo->tm_mday,
+        timeinfo->tm_hour, ((int)(timeinfo->tm_min)/5)*5);
+
+    // 根据内容计算hash值
+    if (content != NULL) {
+        hashCode = SDBMHash(content, MAXSIZE);
+    }
+    
+    if (content != NULL && device->loggerFlag[hashCode] == 0) {
+        // 写日志
+        {
+            FILE *fp;
+            fp = fopen(filename, "at+");
+            if (fp != NULL)
+            { 
+                fprintf(fp, "[LOG-INFO: %s] Simulation Time: %fs EVENT: ",device->deviceName, device->time);
+        
+                fprintf(fp, content);
+                fprintf(fp, "...OK\n");
+                fclose(fp);
+                fp = NULL;
+
+                device->loggerFlag[hashCode] = 1;
+            }
+        }
+    }
+}
+
+
+/**
+ * 上面日志函数的重载形式, 主要用于相别信息
+*/
+void writePhaseLog(Device* device, char* content, int phase) {
+    // 获取当前时间作为日志文件名
+    // 每隔5分钟更新文件名
+    unsigned int hashCode;
+    time_t rawtime;
+    struct tm* timeinfo;
+    char filename[40];
+    char formatContent[128];
+    char charPhase;
+
+    // 将相别数字转换为字母
+    charPhase = (char)('A'+phase);
+
+    // 格式化字符串
+    sprintf(formatContent, content, charPhase);
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    sprintf(filename, "..\\\\log\\\\%04d-%02d-%02d_%02d-%02d.txt",
+        (timeinfo->tm_year+1900), timeinfo->tm_mon, timeinfo->tm_mday,
+        timeinfo->tm_hour, ((int)(timeinfo->tm_min)/5)*5);
+
+    // 根据内容计算hash值
+    if (formatContent != NULL) {
+        hashCode = SDBMHash(formatContent, MAXSIZE);
+    }
+    
+    if (formatContent != NULL && device->loggerFlag[hashCode] == 0) {
+        // 写日志
+        {
+            FILE *fp;
+            fp = fopen(filename, "at+");
+            if (fp != NULL)
+            { 
+                fprintf(fp, "[LOG-INFO: %s] Simulation Time: %fs EVENT: ",device->deviceName, device->time);
+        
+                fprintf(fp, formatContent);
+                fprintf(fp, "...OK\n");
+                fclose(fp);
+                fp = NULL;
+
+                device->loggerFlag[hashCode] = 1;
+            }
+        }
+    }
+}
+
+
+/**
+ * hash算法
+ * @param:需要求hash值的字符串
+ * @param:数组长度
+ */
+unsigned int SDBMHash(char *str, int arrLength) {
+    unsigned int hash = 0; 
+    while (*str)
+    {
+        // equivalent to: hash = 65599*hash + (*str++);
+        hash = (*str++) + (hash << 6) + (hash << 16) - hash;
+    }
+ 
+    return (hash & 0x7FFFFFFF)%arrLength;
+}
+
+
