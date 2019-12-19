@@ -3,6 +3,7 @@
 
 extern lineStarter(Device* device, int phase);
 extern distanceRelay(Device* device, int phase);
+extern overCurrentRelay(Device* device, int phase);
 
 
 void line(Device* device) {

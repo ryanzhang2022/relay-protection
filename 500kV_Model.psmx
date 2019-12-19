@@ -5,10 +5,9 @@
       <Definition scope="500kV_Model" name="Station" status="warning" link="66" /><![CDATA[Definition 'Station' has an invalid crc value, it may be corrupt.]]></message>
     <message status="warning" label="validation">
       <Definition scope="500kV_Model" name="Main" status="warning" link="63" /><![CDATA[Definition 'Main' has an invalid crc value, it may be corrupt.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating network and source code 'D:\文档\Github\relay-protection\500kV_Model.if12\Main.f'.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating 'D:\文档\Github\relay-protection\500kV_Model.if12\500kV_Model.map'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 203ms  Make: 0ms]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 0ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 16ms  Make: 31ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 16ms]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: call D:\Program Files (x86)\Intel\ComposerXE-2011\bin\ifortvars.bat  ia32]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: nmake -f 500kV_Model.mak]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: D:\文档\Github\RELAY-~1\500KV_~1.IF1\\500KV_~1.BAT]]></message>
@@ -38,7 +37,7 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "common.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[common.c]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[common.c(198) : warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.]]></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[common.c(198) : warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\common.c" /></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\INCLUDE\time.inl(112) : 参见“localtime”的声明]]></message>
     <message status="warning" label="build" scope="500kV_Model"><![CDATA[common.c(201) : warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\common.c" /></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\INCLUDE\stdio.h(371) : 参见“sprintf”的声明]]></message>
@@ -63,6 +62,15 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "lineStarter.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[lineStarter.c]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "lineStarter.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"D:\文档\Github\relay-protection\\code\overCurrentRelay.c"' into object code.]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[cl.exe /nologo /MT /W3 /EHsc /c  /O2 "overCurrentRelay.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[overCurrentRelay.c]]></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[overCurrentRelay.c(14) : warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\overCurrentRelay.c" /></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[overCurrentRelay.c(15) : warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\overCurrentRelay.c" /></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[overCurrentRelay.c(16) : warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\overCurrentRelay.c" /></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[overCurrentRelay.c(18) : warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据]]><File url="D:\文档\Github\relay-protection\500kV_Model.if12\\overCurrentRelay.c" /></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "overCurrentRelay.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Linking object code and libraries into binary '500kV_Model.exe']]></message>
   </messagelist>
   <emt>
@@ -79,7 +87,7 @@
     </netlist>
   </emt>
   <views>
-    <view name="Main" zoomlevel="6" scrollx="609" scrolly="288" />
+    <view name="Main" zoomlevel="6" scrollx="609" scrolly="360" />
   </views>
   <catalog>
     <group name="(No Label)">
