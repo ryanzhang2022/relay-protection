@@ -58,6 +58,7 @@ void overCurretRelay(Device* device, int phase) {
     if (*tripTime > tBackset) {
         *tripFlag = 0;
         *tripTime = 0;
+        *timeCount = 0;
     }
     
 }
