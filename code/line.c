@@ -42,6 +42,14 @@ void line(Device* device) {
         }
     }
 
+    // 过电流保护 三相
+    for (phase = 0; phase < 3; phase++) {
+        if (device->startFlag[phase] == 1) {
+            overCurrentRelay(device, phase);
+
+        }
+    }
+
 
 
     // 根据各保护动作情况,打印日志信息

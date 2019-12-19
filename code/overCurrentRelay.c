@@ -1,7 +1,7 @@
 ﻿#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
-void overCurretRelay(Device* device, int phase) {
+void overCurrentRelay(Device* device, int phase) {
     int* timeCount;
     int* tripFlag;
 
