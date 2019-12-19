@@ -68,8 +68,8 @@ typedef struct Device {
     Phasor phasor[12];
 
     // 延时计数
-    int distanceTimeCount[3];
-    int overCurrentTimeCount[3];
+    int distanceTimeCount[6];
+    int overCurrentTimeCount[6];
 
     // 整定值
     double overCurrentSetValue[20];
@@ -84,8 +84,8 @@ typedef struct Device {
 
     int temp;
 
-    // 唯一执行语句标志位
-    int notYetFlag[MAXSIZE];
+    // 日志标志位
+    int loggerFlag[MAXSIZE];
    
 } Device;
 
