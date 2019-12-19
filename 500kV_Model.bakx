@@ -21,7 +21,7 @@
     <param name="Warn" value="0" />
     <param name="Check" value="0" />
     <param name="description" value="500kV_Model" />
-    <param name="revisor" value="Swordsman, 1576660158" />
+    <param name="revisor" value="Swordsman, 1576724868" />
     <param name="startup_filename" value="" />
     <param name="labels" value="" />
   </paramlist>
@@ -353,7 +353,7 @@
         </User>
       </schematic>
     </Definition>
-    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="75352527" instances="1" key="" view="false">
+    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="9647600" instances="1" key="" view="false">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -435,8 +435,8 @@
               <param name="ymax" value="250" />
             </paramlist>
             <paramlist link="1765006528" name="">
-              <param name="xmin" value="0.375085324232" />
-              <param name="xmax" value="0.675085324232" />
+              <param name="xmin" value="0.25" />
+              <param name="xmax" value="0.7" />
             </paramlist>
             <paramlist link="1889554384" name="">
               <param name="ymin" value="-4" />
@@ -458,7 +458,7 @@
         </Wire>
       </schematic>
     </Definition>
-    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="90795455" instances="1" key="" view="false" date="1576659066">
+    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="29836084" instances="1" key="" view="false" date="1576724809">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -671,7 +671,7 @@
           <vertex x="0" y="0" />
           <vertex x="72" y="0" />
         </Wire>
-        <User classid="UserCmp" defn="master:tpflt" id="1875527679" x="954" y="180" w="60" h="71" z="520" orient="4" link="-1">
+        <User classid="UserCmp" defn="master:tpflt" id="1875527679" x="954" y="180" w="64" h="71" z="520" orient="4" link="-1">
           <paramlist link="-1" name="">
             <param name="Ctype" value="0" />
             <param name="OpCur" value="0" />
@@ -681,7 +681,7 @@
             <param name="RON" value="5 [ohm]" />
             <param name="ROFF" value="1.0E6 [ohm]" />
             <param name="A" value="1" />
-            <param name="B" value="0" />
+            <param name="B" value="1" />
             <param name="C" value="0" />
             <param name="G" value="1" />
             <param name="Ifla" value="" />
@@ -2214,10 +2214,11 @@
           <vertex x="-72" y="0" />
           <vertex x="-72" y="144" />
         </Wire>
+        <FileCmp classid="FileCmp" x="972" y="450" w="72" h="54" name="code\lineStarter.c" />
       </schematic>
     </Definition>
   </definitions>
-  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/18" time="16:54:46.000000">
+  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/19" time="11:06:49.000000">
     <paramlist />
     <domain name="Time" unit="s" mult="0.0" skew="0.0">
       <sample rate="2399.999808" end="2400" />
@@ -2233,4 +2234,5 @@
     </analog>
     <digital />
   </output>
+  <paramlist name="Libs" />
 </project>

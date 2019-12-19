@@ -1,10 +1,13 @@
 ﻿#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
+extern lineStarter(Device* device, int phase);
 extern distanceRelay(Device* device, int phase);
 
 
 void line(Device* device) {
+    int phase = 0;
+
     // 将采样值存入瞬时值数组
     sample2inst(device);
     
@@ -14,20 +17,30 @@ void line(Device* device) {
     // 利用滤波后数据计算12通道相量,存入phasor数组
     toPhasor(device);
 
-    // 过电流启动判据
-    // 只有满足启动判据,才执行判别逻辑
-    overCurrentStart(device);
+    /**
+     * 启动判据
+     * 只有保护没有启动才进入判别, 只要有一种启动判据动作置位,
+     * 就不再进行启动判别.
+     */
+
+    for (phase = 0; phase < 3; phase++) {
+        if (device->startFlag[phase] == 0) {
+            lineStarter(device, phase);
+        }
+    }
     
     // 保护主判据, 使用计算得到的相量进行相关保护逻辑的实现
     // code...
     
 
-    // 距离保护 A相
+    // 距离保护 三相
+    for (phase = 0; phase < 3; phase++) {
+        if (device->startFlag[phase] == 1) {
+            distanceRelay(device, phase);
 
-
-    if (device->startFlag[0] == 1) {
-        distanceRelay(device, 0);
+        }
     }
+
 
 
     // 根据各保护动作情况,打印日志信息
