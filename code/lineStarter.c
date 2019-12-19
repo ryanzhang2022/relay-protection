@@ -5,12 +5,13 @@ double* chooseCurrentPhase(Device* device, int phase);
 double* chooseVoltagePhase(Device* device, int phase);
 void overCurrentStart(Device* device, int phase);
 int singlePhaseStart(double* inst);
+void zeroSequenceCurrentStart(Device* device,int phase);
 
 
 // 线路启动判据
 void lineStarter(Device* device, int phase) {
     overCurrentStart(device, phase);
-    //其他启动判据...
+    zeroSequenceCurrentStart(device, phase);
 }
 
 
@@ -83,4 +84,26 @@ double* chooseVoltagePhase(Device* device, int phase) {
             break;
     }
     return instVm;
+}
+
+/**
+ * 零序过电流起动判据
+ * 整定值为0.1kA
+ */
+void zeroSequenceCurrentStart(Device* device,int phase){
+
+    Phasor I0, temp;
+    double abs;
+
+    temp = phasorAdd(device->phasor[3], device->phasor[4]);
+    I0 = phasorAdd(temp, device->phasor[5]);
+    abs = phasorAbs(I0)/3;
+
+    if (abs > 0.1){
+        device->startFlag[0] = 1;
+        device->startFlag[1] = 1;
+        device->startFlag[2] = 1;
+        writeLog(device, "零序过电流启动元件动作");
+    }
+
 }
