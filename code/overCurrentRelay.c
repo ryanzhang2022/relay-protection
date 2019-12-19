@@ -1,11 +1,11 @@
-#include "..\\code\\dataStruct.h"
+﻿#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
 void overCurretRelay(Device* device, int phase) {
     int* timeCount;
     int* tripFlag;
-    int* tripTime;
-    
+
+
     // 整定值
     double I1set = device->overCurrentSetValue[1];
     double I2set = device->overCurrentSetValue[2];
@@ -14,14 +14,14 @@ void overCurretRelay(Device* device, int phase) {
     int t1set = device->overCurrentTimeSetValue[1];
     int t2set = device->overCurrentTimeSetValue[2];
     int t3set = device->overCurrentTimeSetValue[3];
-    int tBackset = device->overCurrentTimeSetValue[4];
+
+    int returnTimeSet = device->overCurrentTimeSetValue[4];
+
 
     Phasor I;
 
-
     timeCount = &device->overCurrentTimeCount[phase];
     tripFlag = &device->overCurrentTripFlag[phase];
-    tripTime = &device->overCurrentTimeCount[4];
     I = device->phasor[3+phase];
 
     // 启动后延时计数
@@ -29,36 +29,29 @@ void overCurretRelay(Device* device, int phase) {
 
 
     // I段
-
-    if (*timeCount > t1set && (absPhasor(I) > I1set)) {
+    if (*timeCount > t1set && (phasorAbs(I) > I1set)) {
         *tripFlag = 1;
+        writeLogWithPhase(device, "%c相过电流保护I段动作", phase);
     }
 
- 
-    // II段
 
-    if (*timeCount > t2set && (absPhasor(I) > I2set)) {
+    // II段
+    if (*timeCount > t2set && (phasorAbs(I) > I2set)) {
         *tripFlag = 1;
+        writeLogWithPhase(device, "%c相过电流保护II段动作", phase);
     }
 
 
     // III段
-
-    if (*timeCount > t3set && (absPhasor(I) > I3set)) {
+    if (*timeCount > t3set && (phasorAbs(I) > I3set)) {
         *tripFlag = 1;
+        writeLogWithPhase(device, "%c相过电流保护III段动作", phase);
     }
 
-
-    // 复归
-
-    if (*tripFlag == 1){
-        (*tripTime)++;
+    // 保护返回
+    if (*timeCount > returnTimeSet) {
+        // 逻辑待定
+        // 清理启动标记?
+        // 计时器归零?
     }
-
-    if (*tripTime > tBackset) {
-        *tripFlag = 0;
-        *tripTime = 0;
-        *timeCount = 0;
-    }
-    
 }
