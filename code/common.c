@@ -139,53 +139,7 @@ void inst2phasor(double* inst, int start, Phasor* phasor) {
 }
 
 
-/**
- * 过电流启动判据
- * 突变量整定值为20A
- */
-void overCurrentStart(Device* device) {
-    // 避免突变量消失后, 启动标志位被置1
-    // A相
-    if (device->startFlag[0] == 0 && singlePhaseStart(device->filterIma) == 1) {
-        device->startFlag[0] = 1;
-        writeLog(device, "A相过电流启动元件动作");
-    } 
-
-    // B相
-    if (device->startFlag[1] == 0 && singlePhaseStart(device->filterImb) == 1) {
-        device->startFlag[1] = 1;
-        writeLog(device, "B相过电流启动元件动作");
-    } 
-
-    // C相
-    if (device->startFlag[2] == 0 && singlePhaseStart(device->filterImc) == 1) {
-        device->startFlag[2] = 1;
-        writeLog(device, "C相过电流启动元件动作");
-    }      
-}
-
-int singlePhaseStart(double* inst) {
-    Phasor phasorNow, phasorBefore, phasorDelta;
-    double amp;
-
-    inst2phasor(inst, 0, &phasorNow);
-    inst2phasor(inst, 3*POINTS, &phasorBefore);
-    
-    phasorDelta = phasorSub(phasorNow, phasorBefore);
-
-    amp = absPhasor(phasorDelta);
-
-
-    // 突变量整定值为20A
-    if (amp > 2.0) {
-        return 1;
-    } else {
-        return 0;
-    }
-    
-}
-
-double absPhasor(Phasor p) {
+double phasorAbs(Phasor p) {
     return sqrt(p.real*p.real + p.img*p.img);
 }
 
@@ -235,7 +189,7 @@ Phasor phasorMulti(double a, Phasor p) {
 void writeLog(Device* device, char* content) {
     // 获取当前时间作为日志文件名
     // 每隔5分钟更新文件名
-    unsigned int hashCode;
+
     time_t rawtime;
     struct tm* timeinfo;
     char filename[40];
@@ -246,12 +200,7 @@ void writeLog(Device* device, char* content) {
         (timeinfo->tm_year+1900), timeinfo->tm_mon, timeinfo->tm_mday,
         timeinfo->tm_hour, ((int)(timeinfo->tm_min)/5)*5);
 
-    // 根据内容计算hash值
-    if (content != NULL) {
-        hashCode = SDBMHash(content, MAXSIZE);
-    }
-    
-    if (content != NULL && device->loggerFlag[hashCode] == 0) {
+    if (content != NULL && notYet(device, content)) {
         // 写日志
         {
             FILE *fp;
@@ -263,9 +212,7 @@ void writeLog(Device* device, char* content) {
                 fprintf(fp, content);
                 fprintf(fp, "...OK\n");
                 fclose(fp);
-                fp = NULL;
-
-                device->loggerFlag[hashCode] = 1;
+                fp = NULL;  
             }
         }
     }
@@ -275,10 +222,10 @@ void writeLog(Device* device, char* content) {
 /**
  * 上面日志函数的重载形式, 主要用于相别信息
 */
-void writePhaseLog(Device* device, char* content, int phase) {
+void writeLogWithPhase(Device* device, char* content, int phase) {
     // 获取当前时间作为日志文件名
     // 每隔5分钟更新文件名
-    unsigned int hashCode;
+
     time_t rawtime;
     struct tm* timeinfo;
     char filename[40];
@@ -297,12 +244,9 @@ void writePhaseLog(Device* device, char* content, int phase) {
         (timeinfo->tm_year+1900), timeinfo->tm_mon, timeinfo->tm_mday,
         timeinfo->tm_hour, ((int)(timeinfo->tm_min)/5)*5);
 
-    // 根据内容计算hash值
-    if (formatContent != NULL) {
-        hashCode = SDBMHash(formatContent, MAXSIZE);
-    }
+
     
-    if (formatContent != NULL && device->loggerFlag[hashCode] == 0) {
+    if (formatContent != NULL && notYet(device, formatContent)) {
         // 写日志
         {
             FILE *fp;
@@ -316,7 +260,6 @@ void writePhaseLog(Device* device, char* content, int phase) {
                 fclose(fp);
                 fp = NULL;
 
-                device->loggerFlag[hashCode] = 1;
             }
         }
     }
@@ -337,6 +280,27 @@ unsigned int SDBMHash(char *str, int arrLength) {
     }
  
     return (hash & 0x7FFFFFFF)%arrLength;
+}
+
+
+/**
+ * notYet函数
+ * 功能:将该函数的返回值作为判别条件,可以保证条件语句内的
+ * 语句仅执行一次, 使用方法如下:
+ * if (notYet(device, "描述代码段的作用")) {
+ *     // 执行语句...
+ * }
+ * 原理:利用"描述代码段的作用"作为该代码段的标识,通过hash计算基本确保唯一性
+ */
+int notYet(Device* device, char* str) {
+    unsigned int hashCode;
+
+    hashCode = SDBMHash(str, MAXSIZE);
+    if (device->notYetFlag[hashCode] == 0) {
+        device->notYetFlag[hashCode] = 1;
+        return 1;
+    } 
+    return 0;    
 }
 
 

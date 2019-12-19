@@ -26,9 +26,9 @@ void distanceRelay(Device* device, int phase) {
     y = phasorMulti(0.5*Z1set, I);
 
     
-    if (*timeCount > 2 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 2 && (phasorAbs(x) - phasorAbs(y)) < 0 ) {
         *tripFlag = 1;
-        writePhaseLog(device, "%c相距离保护I段动作", phase);
+        writeLogWithPhase(device, "%c相距离保护I段动作", phase);
     }
 
  
@@ -37,9 +37,9 @@ void distanceRelay(Device* device, int phase) {
     y = phasorMulti(0.5*Z2set, I);
 
 
-    if (*timeCount > 48 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 48 && (phasorAbs(x) - phasorAbs(y)) < 0 ) {
         *tripFlag = 1;
-        writePhaseLog(device, "%c相距离保护II段动作", phase);
+        writeLogWithPhase(device, "%c相距离保护II段动作", phase);
     }
 
 
@@ -49,9 +49,9 @@ void distanceRelay(Device* device, int phase) {
 
 
 
-    if (*timeCount > 150 && (absPhasor(x) - absPhasor(y)) < 0 ) {
+    if (*timeCount > 150 && (phasorAbs(x) - phasorAbs(y)) < 0 ) {
         *tripFlag = 1;
-        writePhaseLog(device, "%c相距离保护III段动作", phase);
+        writeLogWithPhase(device, "%c相距离保护III段动作", phase);
     }
 
     

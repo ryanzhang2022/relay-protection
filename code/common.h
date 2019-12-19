@@ -6,9 +6,8 @@ void dataFilter(Device*);
 
 void toPhasor(Device*);
 
-void overCurrentStart(Device* device);
 
-double absPhasor(Phasor p);
+double phasorAbs(Phasor p);
 Phasor phasorAdd(Phasor pa, Phasor pb);
 Phasor phasorSub(Phasor, Phasor);
 Phasor phasorMulti(double a, Phasor p);
@@ -18,10 +17,13 @@ void lowPassFilter(double* aft, double* bef);
 void inst2phasor(double* inst, int start, Phasor* phasor);
 int singlePhaseStart(double* inst);
 
-void writeLog(Device* device, char* content);
-void writePhaseLog(Device* device, char* content, int phase);
-
+int notYet(Device* device, char* str);
 unsigned int SDBMHash(char *str, int arrLength); 
+
+void writeLog(Device* device, char* content);
+void writeLogWithPhase(Device* device, char* content, int phase);
+
+
 
 
 
