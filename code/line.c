@@ -7,6 +7,7 @@ extern overCurrentRelay(Device* device, int phase);
 
 
 void line(Device* device) {
+
     int phase = 0;
 
     // 将采样值存入瞬时值数组
@@ -46,7 +47,6 @@ void line(Device* device) {
     for (phase = 0; phase < 3; phase++) {
         if (device->startFlag[phase] == 1) {
             overCurrentRelay(device, phase);
-
         }
     }
 

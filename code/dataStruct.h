@@ -64,25 +64,39 @@ typedef struct Device {
     
     // 保护启动标志
     int startFlag[3];
+    // 保护启动时间
+    double startTime;
+
     // 相量实时计算值
     Phasor phasor[12];
 
-    // 延时计数
-    int distanceTimeCount[3];
-    int overCurrentTimeCount[3];
+    // 线路启动元件整定值: 0:电流突变量整定值  1:零序电流整定值  ...
+    double lineStartSetValue[10];
 
-    // 整定值
-    double overCurrentSetValue[20];
-    double overCurrentTimeSetValue[20];
+    // 过电流保护整定值
+    double overCurrentSetValue[10];
+    double overCurrentTimeSetValue[10];
 
-    // 保护动作标志
+    // 距离保护整定值
+    double distanceSetValue[10];
+    double distanceTimeSetValue[10];
+
+    // 纵联保护整定值
+    double lengthDiffSetValue[10];
+    double lengthDiffTimeSetValue[10];
+
+    // 零序电流保护整定值
+    double zeroSequenceSetValue[10];
+    double zeroSequenceTimeSetValue[10];
+
+    // 线路保护动作标志
     int distanceTripFlag[3];
     int overCurrentTripFlag[3];
+    int lengthDiffTripFlag[3];
+    int zeroSequenceTripCount[3];
 
     // 跳闸动作标志
-    int overallTripFlag[3];
-
-    int temp;
+    int tripFlag[3];
 
     // 唯一执行语句标志位
     int notYetFlag[MAXSIZE];

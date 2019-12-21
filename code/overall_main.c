@@ -17,10 +17,32 @@ extern double line(Device*); // 线路保护
 
 void line_1_p(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* ka, double* kb, double* kc, double* time, double* p1, double* p2, double* p3) {
     // 设置装置名
-    if (notYet(&lineDevice01, "设置保护装置名")) {
+    if (notYet(&lineDevice01, "设置保护装置名及保护定值")) {
         lineDevice01.deviceName = "线路1-P";
-        //code...
+        lineDevice01.lineStartSetValue[0] = 0.5; // 电流突变量启动
+        lineDevice01.lineStartSetValue[1] = 0.1; // 零序电流启动
+
+        lineDevice01.overCurrentSetValue[0] = 3.0;  // I段
+        lineDevice01.overCurrentSetValue[1] = 2.5;  // II段
+        lineDevice01.overCurrentSetValue[2] = 1.5;  // III段
+
+        lineDevice01.overCurrentTimeSetValue[0] = 20e-3; // I段延时20ms
+        lineDevice01.overCurrentTimeSetValue[1] = 0.5; // II段
+        lineDevice01.overCurrentTimeSetValue[2] = 1.0; // III段
+        lineDevice01.overCurrentTimeSetValue[3] = 4.0; // 返回
+
+        lineDevice01.distanceSetValue[0] = 40;
+        lineDevice01.distanceSetValue[1] = 120;
+        lineDevice01.distanceSetValue[2] = 300;
+
+        lineDevice01.distanceTimeSetValue[0] = 10e-3;        
+        lineDevice01.distanceTimeSetValue[1] = 0.2;        
+        lineDevice01.distanceTimeSetValue[2] = 0.5;        
+        lineDevice01.distanceTimeSetValue[3] = 4.0;        
+
     }
+
+    
 
     // 初始化日志
     writeLog(&lineDevice01, "装置初始化");

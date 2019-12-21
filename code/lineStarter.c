@@ -4,7 +4,7 @@
 double* chooseCurrentPhase(Device* device, int phase);
 double* chooseVoltagePhase(Device* device, int phase);
 void overCurrentStart(Device* device, int phase);
-int singlePhaseStart(double* inst);
+int singlePhaseStart(Device* device, double* inst);
 void zeroSequenceCurrentStart(Device* device,int phase);
 
 
@@ -16,8 +16,6 @@ void lineStarter(Device* device, int phase) {
 
 
 
-
-
 /**
  * 过电流启动判据
  * 突变量整定值为0.5kA
@@ -26,14 +24,14 @@ void overCurrentStart(Device* device, int phase) {
     double* instIm;
     instIm = chooseCurrentPhase(device, phase);
     
-    if (singlePhaseStart(instIm) == 1) {
+    if (singlePhaseStart(device, instIm) == 1) {
         device->startFlag[phase] = 1;
         writeLogWithPhase(device, "%c相过电流启动元件动作", phase);
     } 
  
 }
 
-int singlePhaseStart(double* inst) {
+int singlePhaseStart(Device* device, double* inst) {
     Phasor phasorNow, phasorBefore, phasorDelta;
     double amp;
 
@@ -45,7 +43,7 @@ int singlePhaseStart(double* inst) {
     amp = phasorAbs(phasorDelta);
 
     // 突变量整定值为0.5kA
-    if (amp > 0.5) {
+    if (amp > device->lineStartSetValue[0]) {
         return 1;
     } else {
         return 0;
@@ -99,7 +97,7 @@ void zeroSequenceCurrentStart(Device* device,int phase){
     I0 = phasorAdd(temp, device->phasor[5]);
     abs = phasorAbs(I0)/3;
 
-    if (abs > 0.1){
+    if (abs > device->lineStartSetValue[1]){
         device->startFlag[0] = 1;
         device->startFlag[1] = 1;
         device->startFlag[2] = 1;
