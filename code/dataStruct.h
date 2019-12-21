@@ -28,7 +28,7 @@ typedef struct Phasor {
 * relayFlag数组, 通用跳闸标记
 */
 typedef struct Device {
-    char* deviceName;
+    char deviceName[40];
     double time;
     double sample[12];
     // 断路器状态采样,合位为1,断开为0

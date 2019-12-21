@@ -25,7 +25,6 @@ void distanceRelay(Device* device, int phase) {
     I = device->phasor[3+phase];
 
 
-
     // I段
     x = phasorSub(U, phasorMulti(0.5*Z1set, I));
     y = phasorMulti(0.5*Z1set, I);
@@ -58,11 +57,14 @@ void distanceRelay(Device* device, int phase) {
         writeLogWithPhase(device, "%c相距离保护III段动作", phase);
     }
 
+
+/*
     // 保护返回
     if ((time-startTime) > returnTimeSet) {
         device->startFlag[phase] = 0;
         *tripFlag = 0;
         writeLog(device, "距离保护返回");
     }
+    */
    
 }

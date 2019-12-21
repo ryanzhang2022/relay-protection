@@ -26,7 +26,9 @@ void overCurrentStart(Device* device, int phase) {
     
     if (singlePhaseStart(device, instIm) == 1) {
         device->startFlag[phase] = 1;
-        writeLogWithPhase(device, "%c相过电流启动元件动作", phase);
+        device->startTime = device->time;
+
+        writeLogWithPhase(device, "%c相电流突变量启动元件动作", phase);
     } 
  
 }
@@ -36,7 +38,7 @@ int singlePhaseStart(Device* device, double* inst) {
     double amp;
 
     inst2phasor(inst, 0, &phasorNow);
-    inst2phasor(inst, 3*POINTS, &phasorBefore);
+    inst2phasor(inst, 1*POINTS, &phasorBefore);
     
     phasorDelta = phasorSub(phasorNow, phasorBefore);
 
@@ -101,6 +103,9 @@ void zeroSequenceCurrentStart(Device* device,int phase){
         device->startFlag[0] = 1;
         device->startFlag[1] = 1;
         device->startFlag[2] = 1;
+        
+        device->startTime = device->time;
+
         writeLog(device, "零序过电流启动元件动作");
     }
 

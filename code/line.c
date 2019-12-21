@@ -39,7 +39,6 @@ void line(Device* device) {
     for (phase = 0; phase < 3; phase++) {
         if (device->startFlag[phase] == 1) {
             distanceRelay(device, phase);
-
         }
     }
 
@@ -50,12 +49,12 @@ void line(Device* device) {
         }
     }
 
-
-
-    // 根据各保护动作情况,打印日志信息
-
-
-    // 综合各保护动作情况,对overallTripFlag置位
+    // 综合各保护动作情况,对tripFlag置位
+    for (phase = 0; phase < 3; phase++) {
+        if (device->overCurrentTripFlag[phase] == 1 || device->distanceTripFlag[phase] == 1) {
+            device->tripFlag[phase] = 1;
+        }
+    }
 
 
     

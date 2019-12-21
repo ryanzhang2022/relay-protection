@@ -1,5 +1,9 @@
 ﻿// common
 
+void initSetValue(Device* device, char* deviceName);
+int upTo10(Device* device); 
+void sample(Device* device, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double);
+
 void sample2inst(Device*);
 
 void dataFilter(Device*);
@@ -15,7 +19,6 @@ Phasor phasorMulti(double a, Phasor p);
 void lowPassFilter(double* aft, double* bef);
 
 void inst2phasor(double* inst, int start, Phasor* phasor);
-int singlePhaseStart(double* inst);
 
 int notYet(Device* device, char* str);
 unsigned int SDBMHash(char *str, int arrLength); 

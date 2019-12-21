@@ -7,7 +7,76 @@
 #include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
+void initSetValue(Device* device, char* deviceName){
+    // 后期应该为根据装置名查找配置文件
 
+    // 设置装置名
+    if (notYet(device, "设置保护装置名及保护定值")) {
+        strcpy(device->deviceName, deviceName);
+        
+        device->lineStartSetValue[0] = 1.0; // 电流突变量启动
+        device->lineStartSetValue[1] = 0.1; // 零序电流启动
+
+        device->overCurrentSetValue[0] = 3.0;  // I段
+        device->overCurrentSetValue[1] = 2.5;  // II段
+        device->overCurrentSetValue[2] = 1.5;  // III段
+
+        device->overCurrentTimeSetValue[0] = 0.1; // I段延时20ms
+        device->overCurrentTimeSetValue[1] = 0.5; // II段
+        device->overCurrentTimeSetValue[2] = 1.0; // III段
+        device->overCurrentTimeSetValue[3] = 4.0; // 返回
+
+        device->distanceSetValue[0] = 40;
+        device->distanceSetValue[1] = 300;
+        device->distanceSetValue[2] = 500;
+
+        device->distanceTimeSetValue[0] = 10e-3;        
+        device->distanceTimeSetValue[1] = 0.1;        
+        device->distanceTimeSetValue[2] = 0.4;        
+        device->distanceTimeSetValue[3] = 4.0; 
+
+        // 初始化完毕,记录日志
+        writeLog(device, "装置初始化");       
+
+    }
+}
+
+int upTo10(Device* device) {
+    device->sampleCount++;
+    if (device->sampleCount == 10) {
+        device->sampleCount = 0;
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+
+// 仿真采样
+void sample(Device* device, double vma, double vmb, double vmc, double ima, double imb, double imc, double vna, double vnb, double vnc, double ina, double inb, double inc, double ka, double kb, double kc, double time) {
+    
+    // 更新装置时间
+    device->time = time;
+    
+    device->sample[0] = vma;
+    device->sample[1] = vmb;
+    device->sample[2] = vmc;
+    device->sample[3] = ima;
+    device->sample[4] = imb;
+    device->sample[5] = imc;
+    device->sample[6] = vna;
+    device->sample[7] = vnb;
+    device->sample[8] = vnc;
+    device->sample[9] = ina;
+    device->sample[10] = inb;
+    device->sample[11] = inc;
+
+    // 采样值合位为0, 开位为2 --转换为--> 合位状态为1,开位状态为0
+    device->brkSample[0] = (int)((2-ka)/2);
+    device->brkSample[1] = (int)((2-kb)/2);
+    device->brkSample[2] = (int)((2-kc)/2);
+    
+}
 
 void sample2inst(Device* device) {
     int i = 0;
@@ -207,7 +276,7 @@ void writeLog(Device* device, char* content) {
             fp = fopen(filename, "at+");
             if (fp != NULL)
             { 
-                fprintf(fp, "[LOG-INFO: %s] Simulation Time: %fs EVENT: ",device->deviceName, device->time);
+                fprintf(fp, "[LOG-INFO] Simulation Time: %fs [%s]: ", device->time, device->deviceName);
         
                 fprintf(fp, content);
                 fprintf(fp, "...OK\n");
@@ -253,7 +322,7 @@ void writeLogWithPhase(Device* device, char* content, int phase) {
             fp = fopen(filename, "at+");
             if (fp != NULL)
             { 
-                fprintf(fp, "[LOG-INFO: %s] Simulation Time: %fs EVENT: ",device->deviceName, device->time);
+                fprintf(fp, "[LOG-INFO] Simulation Time: %fs [%s]: ",device->time, device->deviceName);
         
                 fprintf(fp, formatContent);
                 fprintf(fp, "...OK\n");

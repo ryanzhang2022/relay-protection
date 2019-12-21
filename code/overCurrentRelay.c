@@ -11,11 +11,11 @@ void overCurrentRelay(Device* device, int phase) {
     double I2set = device->overCurrentSetValue[1];
     double I3set = device->overCurrentSetValue[2];
 
-    int t1set = device->overCurrentTimeSetValue[0];
-    int t2set = device->overCurrentTimeSetValue[1];
-    int t3set = device->overCurrentTimeSetValue[2];
+    double t1set = device->overCurrentTimeSetValue[0];
+    double t2set = device->overCurrentTimeSetValue[1];
+    double t3set = device->overCurrentTimeSetValue[2];
 
-    int returnTimeSet = device->overCurrentTimeSetValue[4];
+    int returnTimeSet = device->overCurrentTimeSetValue[3];
 
 
     Phasor I;
@@ -33,7 +33,9 @@ void overCurrentRelay(Device* device, int phase) {
 
     // II段
     if ((time-startTime) > t2set && (phasorAbs(I) > I2set)) {
+        
         *tripFlag = 1;
+
         writeLogWithPhase(device, "%c相过电流保护II段动作", phase);
     }
 
@@ -45,10 +47,12 @@ void overCurrentRelay(Device* device, int phase) {
     }
 
 
+/*
     // 保护返回
     if ((time-startTime) > returnTimeSet) {
         device->startFlag[phase] = 0;
         *tripFlag = 0;
-        writeLog(device, "过电流保护返回");
+        writeLogWithPhase(device, "c%相过电流保护返回", phase);
     }
+    */
 }
