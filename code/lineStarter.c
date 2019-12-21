@@ -1,4 +1,4 @@
-﻿#include "..\\code\\dataStruct.h"
+#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
 double* chooseCurrentPhase(Device* device, int phase);

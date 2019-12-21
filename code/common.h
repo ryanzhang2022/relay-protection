@@ -1,4 +1,4 @@
-﻿// common
+// common
 
 void initSetValue(Device* device, char* deviceName);
 int upTo10(Device* device); 

@@ -1,4 +1,4 @@
-﻿#include "..\\code\\dataStruct.h"
+#include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
 extern lineStarter(Device* device, int phase);

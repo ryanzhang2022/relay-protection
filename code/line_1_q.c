@@ -1,4 +1,4 @@
-﻿#include "..\\code\\dataStruct.h"
+#include "..\\code\\dataStruct.h"
 #include "..\\code\common.h"
 
 // 定义全局变量
@@ -9,6 +9,6 @@ Device line1Q;
 extern double line(Device*); // 线路保护
 
 
-void line_1_q(double* vma, double* vmb, double* vmc, double* ima, double* imb, double* imc, double* vna, double* vnb, double* vnc, double* ina, double* inb, double* inc, double* ka, double* kb, double* kc, double* time, double* p1, double* p2, double* p3) {
-
+void line_1_q_(double* vm, double* im, double* vn, double* in, double* time, double* brk, double* p1, double* p2, double* p3) {
+    *p1 = vm[0];
 }
