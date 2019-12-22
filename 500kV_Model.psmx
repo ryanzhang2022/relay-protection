@@ -7,7 +7,7 @@
       <Definition scope="500kV_Model" name="Main" status="warning" link="63" /><![CDATA[Definition 'Main' has an invalid crc value, it may be corrupt.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating network and source code 'C:\Users\Zxy\Documents\GitHub\relay-protection\500kV_Model.gf42\Main.f'.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating 'C:\Users\Zxy\Documents\GitHub\relay-protection\500kV_Model.gf42\500kV_Model.map'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 125ms  Make: 15ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 187ms  Make: 0ms]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 16ms]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: call C:\fortran\bin\gf42vars.bat]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: make -f 500kV_Model.mak]]></message>
@@ -35,7 +35,6 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\lineStarter.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "lineStarter.c"]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[lineStarter.c:112:2: warning: no newline at end of file]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "lineStarter.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\overCurrentRelay.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
@@ -61,10 +60,11 @@
     </netlist>
   </emt>
   <views>
-    <view name="Main" zoomlevel="6" scrollx="641" scrolly="288" />
+    <view name="Main" zoomlevel="6" scrollx="0" scrolly="0" />
   </views>
   <catalog>
     <group name="(No Label)">
+      <item name="line_1_Q" />
       <item name="line_1_P" />
     </group>
   </catalog>

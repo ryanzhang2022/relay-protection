@@ -3,15 +3,22 @@
 
 double* chooseCurrentPhase(Device* device, int phase);
 double* chooseVoltagePhase(Device* device, int phase);
-void overCurrentStart(Device* device, int phase);
+int overCurrentStart(Device* device, int phase);
 int singlePhaseStart(Device* device, double* inst);
-void zeroSequenceCurrentStart(Device* device,int phase);
+int zeroSequenceCurrentStart(Device* device,int phase);
+void recordMemoryUI(Device* device);
 
 
 // 线路启动判据
 void lineStarter(Device* device, int phase) {
-    overCurrentStart(device, phase);
-    zeroSequenceCurrentStart(device, phase);
+    int flag1 = overCurrentStart(device, phase);
+    int flag2 = zeroSequenceCurrentStart(device, phase);
+
+    if (flag1 == 1 || flag2 == 1) {
+        device->startTime = device->time;
+        // 存储记忆量
+        recordMemoryUI(device);
+    }
 }
 
 
@@ -20,7 +27,7 @@ void lineStarter(Device* device, int phase) {
  * 过电流启动判据
  * 突变量整定值为0.5kA
  */
-void overCurrentStart(Device* device, int phase) {
+int overCurrentStart(Device* device, int phase) {
     double* instIm;
     instIm = chooseCurrentPhase(device, phase);
     
@@ -29,8 +36,9 @@ void overCurrentStart(Device* device, int phase) {
         device->startTime = device->time;
 
         writeLogWithPhase(device, "%c相电流突变量启动元件动作", phase);
+        return 1;
     } 
- 
+    return 0;
 }
 
 int singlePhaseStart(Device* device, double* inst) {
@@ -90,7 +98,7 @@ double* chooseVoltagePhase(Device* device, int phase) {
  * 零序过电流起动判据
  * 整定值为0.1kA
  */
-void zeroSequenceCurrentStart(Device* device,int phase){
+int zeroSequenceCurrentStart(Device* device,int phase){
 
     Phasor I0, temp;
     double abs;
@@ -107,6 +115,11 @@ void zeroSequenceCurrentStart(Device* device,int phase){
         device->startTime = device->time;
 
         writeLog(device, "零序过电流启动元件动作");
+        return 1;
     }
+    return 0;
+}
 
+void recordMemoryUI(Device* device) {
+    // 记录当前时刻
 }

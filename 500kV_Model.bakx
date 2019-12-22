@@ -21,7 +21,7 @@
     <param name="Warn" value="0" />
     <param name="Check" value="0" />
     <param name="description" value="500kV_Model" />
-    <param name="revisor" value="Zxy, 1576937879" />
+    <param name="revisor" value="Zxy, 1577020827" />
     <param name="startup_filename" value="" />
     <param name="labels" value="" />
   </paramlist>
@@ -221,7 +221,7 @@
         <segment name="Computations"><![CDATA[]]></segment>
       </script>
     </Definition>
-    <Definition classid="RowDefn" name="TLine_1" group="" url="" version="" build="" crc="59256287" instances="1" key="" view="false" date="1576936796">
+    <Definition classid="RowDefn" name="TLine_1" group="" url="" version="" build="" crc="59256287" instances="1" key="" view="false" date="1577020751">
       <paramlist name="">
         <param name="Description" value="" />
         <param name="type" value="TLine" />
@@ -307,7 +307,7 @@
         </User>
       </schematic>
     </Definition>
-    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="107031295" instances="1" key="" view="false">
+    <Definition classid="StationDefn" name="Station" group="" url="" version="" build="" crc="88201254" instances="1" key="" view="false">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -329,8 +329,8 @@
           <User classid="UserCmp" name="good500kV:Main" id="1548514214" x="0" y="0" w="0" h="0" z="-1" orient="0" defn="500kV_Model:Main" link="1548514214">
             <paramlist link="-1" name="" />
             <paramlist link="1381153294" name="">
-              <param name="xmin" value="0.48" />
-              <param name="xmax" value="0.55" />
+              <param name="xmin" value="0.46" />
+              <param name="xmax" value="0.64" />
             </paramlist>
             <paramlist link="714029799" name="">
               <param name="ymin" value="-6" />
@@ -349,24 +349,24 @@
               <param name="ymax" value="500" />
             </paramlist>
             <paramlist link="1102414063" name="">
-              <param name="xmin" value="0.44" />
-              <param name="xmax" value="0.6" />
+              <param name="xmin" value="0.54" />
+              <param name="xmax" value="0.66" />
             </paramlist>
             <paramlist link="2085446872" name="">
               <param name="ymin" value="-1" />
               <param name="ymax" value="1" />
             </paramlist>
             <paramlist link="723250368" name="">
-              <param name="ymin" value="-800" />
-              <param name="ymax" value="600" />
+              <param name="ymin" value="-500" />
+              <param name="ymax" value="500" />
             </paramlist>
             <paramlist link="213736502" name="">
               <param name="ymin" value="-1" />
               <param name="ymax" value="1" />
             </paramlist>
             <paramlist link="1867381391" name="">
-              <param name="ymin" value="-600" />
-              <param name="ymax" value="600" />
+              <param name="ymin" value="-800" />
+              <param name="ymax" value="800" />
             </paramlist>
             <paramlist link="550323436" name="">
               <param name="ymin" value="-1" />
@@ -413,14 +413,14 @@
               <param name="xmax" value="1.2" />
             </paramlist>
             <paramlist link="2003494449" name="">
-              <param name="ymin" value="-500" />
-              <param name="ymax" value="500" />
+              <param name="ymin" value="-0.1" />
+              <param name="ymax" value="0.1" />
             </paramlist>
           </User>
         </Wire>
       </schematic>
     </Definition>
-    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="31074017" instances="1" key="" view="false" date="1576937619">
+    <Definition classid="UserCmpDefn" name="Main" group="" url="" version="" build="" crc="103984706" instances="1" key="" view="false" date="1577020750">
       <paramlist name="">
         <param name="Description" value="" />
       </paramlist>
@@ -633,7 +633,7 @@
           <vertex x="0" y="0" />
           <vertex x="72" y="0" />
         </Wire>
-        <User classid="UserCmp" defn="master:tpflt" id="1875527679" x="954" y="180" w="64" h="71" z="420" orient="4" link="-1">
+        <User classid="UserCmp" defn="master:tpflt" id="1875527679" x="954" y="180" w="67" h="71" z="420" orient="4" link="-1">
           <paramlist link="-1" name="">
             <param name="Ctype" value="0" />
             <param name="OpCur" value="0" />
@@ -644,7 +644,7 @@
             <param name="ROFF" value="1.0E6 [ohm]" />
             <param name="A" value="1" />
             <param name="B" value="1" />
-            <param name="C" value="0" />
+            <param name="C" value="1" />
             <param name="G" value="1" />
             <param name="Ifla" value="" />
             <param name="Iflb" value="" />
@@ -793,7 +793,7 @@
               <param name="ymin" value="-1" />
               <param name="ymax" value="1" />
             </paramlist>
-            <Curve classid="Curve" name="I1" link="2022845773" color="0" bold="0" show="251" mode="0" />
+            <Curve classid="Curve" name="I1" link="2022845773" color="0" bold="0" show="255" mode="0" />
           </Graph>
           <Graph classid="OverlayGraph" id="879103642" link="-1">
             <paramlist link="-1" name="">
@@ -817,7 +817,7 @@
               <param name="ymin" value="-1" />
               <param name="ymax" value="1" />
             </paramlist>
-            <Curve classid="Curve" name="I2" link="1749485402" color="0" bold="0" show="255" mode="0" />
+            <Curve classid="Curve" name="I2" link="1749485402" color="0" bold="0" show="249" mode="0" />
           </Graph>
         </Frame>
         <Frame classid="GraphFrame" id="1102414063" name="frame" x="54" y="1296" w="576" h="378" link="-1">
@@ -849,7 +849,7 @@
             <paramlist link="-1" name="">
               <param name="title" value="" />
               <param name="units" value="" />
-              <param name="gridvalue" value="200.000000" />
+              <param name="gridvalue" value="100.000000" />
               <param name="yintervalue" value="0.000000" />
               <param name="grid" value="true" />
               <param name="ticks" value="false" />
@@ -1136,7 +1136,7 @@
                 <row><![CDATA[0,0,0,0,0,0,0,0,-1,-1]]></row>
                 <row><![CDATA[0,0,0,0,0,0,0,0,0,-1]]></row>
               </param>
-              <param name="Date" value="1576936796" />
+              <param name="Date" value="1577020751" />
             </paramlist>
           </User>
           <vertex x="0" y="0" />
@@ -1437,7 +1437,7 @@
           </paramlist>
         </Line>
         <FileCmp classid="FileCmp" x="792" y="558" w="72" h="54" name="code\line.c" />
-        <FileCmp classid="FileCmp" x="882" y="342" w="72" h="54" name="code\common.c" />
+        <FileCmp classid="FileCmp" x="792" y="342" w="72" h="54" name="code\common.c" />
         <User classid="UserCmp" name="master:pgb" id="229447419" x="594" y="432" w="36" h="37" z="380" orient="0" defn="master:pgb" link="-1">
           <paramlist link="-1" name="">
             <param name="Name" value="p2" />
@@ -1876,7 +1876,7 @@
             <paramlist link="-1" name="">
               <param name="title" value="" />
               <param name="units" value="" />
-              <param name="gridvalue" value="100.000000" />
+              <param name="gridvalue" value="0.025000" />
               <param name="yintervalue" value="0.000000" />
               <param name="grid" value="true" />
               <param name="ticks" value="false" />
@@ -1900,7 +1900,7 @@
       </schematic>
     </Definition>
   </definitions>
-  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/21" time="22:15:24.000000">
+  <output name="500kV_Model" device="EMTDC" version="2010" date="2019/12/22" time="21:19:10.000000">
     <paramlist />
     <domain name="Time" unit="s" mult="0.0" skew="0.0">
       <sample rate="2399.999808" end="2400" />

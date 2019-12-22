@@ -61,6 +61,13 @@ typedef struct Device {
     double filterIna[WINDOW];
     double filterInb[WINDOW];
     double filterInc[WINDOW];
+
+    // 记忆量
+    Phasor memVma, memVmb, memVmc;
+    Phasor memIma, memImb, memImc;
+    Phasor memVna, memVnb, memVnc;
+    Phasor memIna, memInb, memInc;
+
     
     // 保护启动标志
     int startFlag[3];
