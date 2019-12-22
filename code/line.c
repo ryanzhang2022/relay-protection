@@ -2,6 +2,7 @@
 #include "..\\code\\common.h"
 
 extern lineStarter(Device* device, int phase);
+extern deltaDistanceRelay(Device* device, int phase);
 extern distanceRelay(Device* device, int phase);
 extern overCurrentRelay(Device* device, int phase);
 
@@ -34,6 +35,12 @@ void line(Device* device) {
     // 保护主判据, 使用计算得到的相量进行相关保护逻辑的实现
     // code...
     
+    // 工频变化量距离保护 三相
+    for (phase = 0; phase < 3; phase++) {
+        if (device->startFlag[phase] == 1) {
+            deltaDistanceRelay(device, phase);
+        }
+    }
 
     // 距离保护 三相
     for (phase = 0; phase < 3; phase++) {

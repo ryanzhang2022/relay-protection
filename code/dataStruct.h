@@ -63,11 +63,14 @@ typedef struct Device {
     double filterInc[WINDOW];
 
     // 记忆量
-    Phasor memVma, memVmb, memVmc;
-    Phasor memIma, memImb, memImc;
-    Phasor memVna, memVnb, memVnc;
-    Phasor memIna, memInb, memInc;
+    Phasor memVma[POINTS], memVmb[POINTS], memVmc[POINTS];
+    Phasor memIma[POINTS], memImb[POINTS], memImc[POINTS];
+    Phasor memVna[POINTS], memVnb[POINTS], memVnc[POINTS];
+    Phasor memIna[POINTS], memInb[POINTS], memInc[POINTS];
 
+    // 线路参数
+    Phasor lineZs; // 自阻抗
+    Phasor lineZm; // 互阻抗
     
     // 保护启动标志
     int startFlag[3];
@@ -80,27 +83,31 @@ typedef struct Device {
     // 线路启动元件整定值: 0:电流突变量整定值  1:零序电流整定值  ...
     double lineStartSetValue[10];
 
-    // 过电流保护整定值
+    
+    // 工频变化量距离
+    double deltaDistanceSetValue[10];
+    double deltaDistanceTimeSetValue[10];
+
+    // 过电流保护
     double overCurrentSetValue[10];
     double overCurrentTimeSetValue[10];
+    int overCurrentTripFlag[3];
 
-    // 距离保护整定值
+    // 距离保护
     double distanceSetValue[10];
     double distanceTimeSetValue[10];
+    int distanceTripFlag[3];
+    
+    // 电流差动保护
+    double currentDiffSetValue[10];
+    double currentDiffTimeSetValue[10];
+    int currentDiffTripFlag[3];
 
-    // 纵联保护整定值
-    double lengthDiffSetValue[10];
-    double lengthDiffTimeSetValue[10];
-
-    // 零序电流保护整定值
+    // 零序电流保护
     double zeroSequenceSetValue[10];
     double zeroSequenceTimeSetValue[10];
-
-    // 线路保护动作标志
-    int distanceTripFlag[3];
-    int overCurrentTripFlag[3];
-    int lengthDiffTripFlag[3];
-    int zeroSequenceTripCount[3];
+    int zeroSequenceTripCount[3];    
+    
 
     // 跳闸动作标志
     int tripFlag[3];

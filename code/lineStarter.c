@@ -6,7 +6,7 @@ double* chooseVoltagePhase(Device* device, int phase);
 int overCurrentStart(Device* device, int phase);
 int singlePhaseStart(Device* device, double* inst);
 int zeroSequenceCurrentStart(Device* device,int phase);
-void recordMemoryUI(Device* device);
+void recordMemoryUI(Device* device); // 未实现
 
 
 // 线路启动判据
@@ -15,7 +15,7 @@ void lineStarter(Device* device, int phase) {
     int flag2 = zeroSequenceCurrentStart(device, phase);
 
     if (flag1 == 1 || flag2 == 1) {
-        device->startTime = device->time;
+        device->startTime = device->time; // 虽然与各自的置位操作重复，但暂时还是保留。
         // 存储记忆量
         recordMemoryUI(device);
     }
@@ -120,6 +120,13 @@ int zeroSequenceCurrentStart(Device* device,int phase){
     return 0;
 }
 
+
+/**
+ * 启动后对进行记忆
+ * 由总启动元件lineStarter调用
+ * 每个电气量（比如Vma）计算一个周波48个相量，思考这是为什么？
+ * 为什么不是记忆启动时刻一个时间点？
+ */
 void recordMemoryUI(Device* device) {
     // 记录当前时刻
 }
