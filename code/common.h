@@ -16,6 +16,10 @@ Phasor phasorAdd(Phasor pa, Phasor pb);
 Phasor phasorSub(Phasor, Phasor);
 Phasor phasorMulti(double a, Phasor p);
 
+Phasor phasorContrarotate(Phasor p, double angle);
+Phasor phasorSeq(Phasor pa, Phasor pb, Phasor pc, int seq);
+double phasorAngleDiff(Phasor pa, Phasor pb);
+
 void lowPassFilter(double* aft, double* bef);
 
 void inst2phasor(double* inst, int start, Phasor* phasor);

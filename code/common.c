@@ -242,6 +242,81 @@ Phasor phasorMulti(double a, Phasor p) {
 }
 
 /**
+ * 逆时针旋转相量
+ * @param:角度数
+ */
+Phasor phasorContrarotate(Phasor p, double angle) {
+    Phasor newp;
+    double radian;
+
+    radian = angle / 180 * PI;
+
+    newp.real = p.real*cos(radian) - p.img*sin(radian);
+    newp.img = p.img*cos(radian) + p.real*sin(radian);
+
+    return newp;
+}
+
+
+/**
+ * 序量计算
+ * @param:seq指示正序/负序/零序
+ */
+Phasor phasorSeq(Phasor pa, Phasor pb, Phasor pc, int seq) {
+    Phasor seqPhasor;
+    Phasor rpa;
+    Phasor rpb;
+    Phasor rpc;
+    Phasor sum;
+
+    if (seq == 1) {
+        // 正序
+        rpa = pa;
+        rpb = phasorContrarotate(pb, 120.0);
+        rpc = phasorContrarotate(pc, 240.0);
+    } else if (seq == 2) {
+        // 负序
+        rpa = pa;
+        rpb = phasorContrarotate(pb, 240.0);
+        rpc = phasorContrarotate(pc, 120.0);
+    } else if (seq == 0) {
+        // 零序
+        rpa = pa;
+        rpb = pb; 
+        rpc = pc;
+    }
+
+    sum = phasorAdd(rpa, phasorAdd(rpb, rpc));
+    return phasorMulti(1/3.0, sum);
+}
+
+
+/**
+ * 返回相角差
+ * 注意：atan(double y, double x) 参数顺序！
+ */
+double phasorAngleDiff(Phasor pa, Phasor pb) {
+    double ang1;
+    double ang2;
+    double res;
+
+    ang1 = atan2(pa.img, pa.real) * 180.0 / PI;
+    ang2 = atan2(pb.img, pb.real) * 180.0 / PI;
+
+    printf("%f\n", ang1);
+    printf("%f\n", ang2);
+
+    // 转成0~360
+    ang1 = ang1 < -0.0001 ? ang1+360.0 : ang1;
+    ang2 = ang2 < -0.0001 ? ang2+360.0 : ang2;
+
+    res = ang1 - ang2;
+    return res;
+
+}
+
+
+/**
  * 日志模块 
  * 参考 C语言实现写入日志文件 https://blog.csdn.net/sunlion81/article/details/8647028
  */

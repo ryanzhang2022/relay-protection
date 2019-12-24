@@ -7,6 +7,7 @@ int overCurrentStart(Device* device, int phase);
 int singlePhaseStart(Device* device, double* inst);
 int zeroSequenceCurrentStart(Device* device,int phase);
 void recordMemoryUI(Device* device); // 未实现
+void ratedParam(Device* device);
 
 
 // 线路启动判据
@@ -18,6 +19,9 @@ void lineStarter(Device* device, int phase) {
         device->startTime = device->time; // 虽然与各自的置位操作重复，但暂时还是保留。
         // 存储记忆量
         recordMemoryUI(device);
+
+        // 计算额定参数, 电压电流..
+        ratedParam(device);
     }
 }
 
@@ -129,4 +133,15 @@ int zeroSequenceCurrentStart(Device* device,int phase){
  */
 void recordMemoryUI(Device* device) {
     // 记录当前时刻
+}
+
+
+/**
+ * 计算额定参数
+ */
+void ratedParam(Device* device) {
+    device->ratedVoltage = phasorAbs(device->memVma[0]) / 1.4142;
+    device->ratedCurrent = phasorAbs(device->memIma[0]) / 1.4142;
+    device->ratedBetweenVoltage = phasorAbs(phasorSub(device->memVmb[0], device->memVma[0])) / 1.4142;
+    device->ratedBetweenCurrent = phasorAbs(phasorSub(device->memImb[0], device->memIma[0])) / 1.4142;
 }

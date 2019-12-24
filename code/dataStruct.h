@@ -68,6 +68,11 @@ typedef struct Device {
     Phasor memVna[POINTS], memVnb[POINTS], memVnc[POINTS];
     Phasor memIna[POINTS], memInb[POINTS], memInc[POINTS];
 
+    // 运行参数
+    double ratedVoltage, ratedCurrent; // 相电压, 相电流
+    double ratedBetweenVoltage, ratedBetweenCurrent; // 相间电压, 线电流
+    double capacityCurrent; // 电容电流
+
     // 线路参数
     Phasor lineZs; // 自阻抗
     Phasor lineZm; // 互阻抗
@@ -114,6 +119,8 @@ typedef struct Device {
 
     // 唯一执行语句标志位
     int notYetFlag[MAXSIZE];
+
+    double temp1;
    
 } Device;
 

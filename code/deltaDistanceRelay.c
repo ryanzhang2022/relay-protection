@@ -14,4 +14,9 @@
  */
 void deltaDistanceRelay(Device* device, int phase) {
     writeLog(device, "工频变化量距离保护测试");
+    //1. 计算delta
+
+    //2. 接地变化距离
+
+    //3. 相间接地距离
 }
