@@ -1,8 +1,11 @@
 // common
 
+void linkSimulation(Device* device, char* deviceName, double time, double* input, double* brk, double* tripSignal);
+
 void initSetValue(Device* device, char* deviceName);
 int upTo10(Device* device); 
-void sample(Device* device, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double);
+// 仿真采样
+void sample(Device* device, double time, double* input, double* brk);
 
 void sample2inst(Device*);
 

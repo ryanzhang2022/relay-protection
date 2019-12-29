@@ -7,26 +7,21 @@
       <Definition scope="500kV_Model" name="Main" status="warning" link="63" /><![CDATA[Definition 'Main' has an invalid crc value, it may be corrupt.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating network and source code 'C:\Users\Zxy\Documents\GitHub\relay-protection\500kV_Model.gf42\Main.f'.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Generating 'C:\Users\Zxy\Documents\GitHub\relay-protection\500kV_Model.gf42\500kV_Model.map'.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 188ms  Make: 0ms]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 0ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Time for Compile: 204ms  Make: 0ms]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Solve Time = 16ms]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: call C:\fortran\bin\gf42vars.bat]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: make -f 500kV_Model.mak]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Will execute: C:\Users\Zxy\DOCUME~1\GitHub\RELAY-~1\500KV_~1.GF4\\500KV_~1.BAT]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Creating EMTDC executable...]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[C:\Users\Zxy\Documents\GitHub\relay-protection\500kV_Model.gf42>call C:\fortran\bin\gf42vars.bat ]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\line_1_p.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "line_1_p.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "line_1_p.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\line.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "line.c"]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[line.c:69:2: warning: no newline at end of file]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "line.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\common.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "common.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "common.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\overCurrentRelay.c"' into object code.]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "overCurrentRelay.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "overCurrentRelay.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\distanceRelay.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "distanceRelay.c"]]></message>
@@ -36,19 +31,20 @@
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "lineStarter.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "lineStarter.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\overCurrentRelay.c"' into object code.]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\line.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "overCurrentRelay.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "overCurrentRelay.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\line_1_q.c"' into object code.]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "line_1_q.c"]]></message>
-    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "line_1_q.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "line.c"]]></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[line.c:69:2: warning: no newline at end of file]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "line.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\deltaDistanceRelay.c"' into object code.]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "deltaDistanceRelay.c"]]></message>
-    <message status="warning" label="build" scope="500kV_Model"><![CDATA[deltaDistanceRelay.c:17:2: warning: no newline at end of file]]></message>
+    <message status="warning" label="build" scope="500kV_Model"><![CDATA[deltaDistanceRelay.c:22:2: warning: no newline at end of file]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "deltaDistanceRelay.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[Compiling generated source '"C:\Users\Zxy\Documents\GitHub\relay-protection\\code\relayMain.c"' into object code.]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[已复制         1 个文件。]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[gcc.exe -c -I"C:\pscad\emtdc\gf42\inc" -I"C:\pscad\emtdc\gf42\windows"  "relayMain.c"]]></message>
+    <message status="normal" label="build" scope="500kV_Model"><![CDATA[del "relayMain.c"]]></message>
     <message status="normal" label="build" scope="500kV_Model"><![CDATA[Linking object code and libraries into binary '500kV_Model.exe']]></message>
   </messagelist>
   <emt>
@@ -65,11 +61,12 @@
     </netlist>
   </emt>
   <views>
-    <view name="Main" zoomlevel="6" scrollx="545" scrolly="288" />
+    <view name="Main" zoomlevel="6" scrollx="113" scrolly="203" />
     <view name="TLine_1" zoomlevel="6" scrollx="0" scrolly="0" />
   </views>
   <catalog>
     <group name="(No Label)">
+      <item name="relayDevice" />
       <item name="line_1_Q" />
       <item name="line_1_P" />
     </group>

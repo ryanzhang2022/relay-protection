@@ -7,6 +7,31 @@
 #include "..\\code\\dataStruct.h"
 #include "..\\code\\common.h"
 
+// 声明各类保护函数
+extern double line(Device*); // 线路保护
+
+/**
+ * 仿真链接函数
+ * 综合以下功能
+ * 初始化/仿真步长设置/跳闸指令
+ */
+void linkSimulation(Device* device, char* deviceName, double time, double* input, double* brk, double* tripSignal) {
+    // 设置整定值
+    initSetValue(device, deviceName); 
+ 
+    // 仿真程序跑10次, 进行一次采样和保护计算
+    if (upTo10(device) == 1) {
+        sample(device, time, input, brk);
+         line(device);
+    }
+  
+    // 结果输出
+    tripSignal[0] = device->tripFlag[0]; 
+    tripSignal[1] = device->tripFlag[1]; 
+    tripSignal[2] = device->tripFlag[2]; 
+
+}
+
 void initSetValue(Device* device, char* deviceName){
     // 后期应该为根据装置名查找配置文件
 
@@ -53,28 +78,21 @@ int upTo10(Device* device) {
 
 
 // 仿真采样
-void sample(Device* device, double vma, double vmb, double vmc, double ima, double imb, double imc, double vna, double vnb, double vnc, double ina, double inb, double inc, double ka, double kb, double kc, double time) {
-    
+void sample(Device* device, double time, double* input, double* brk) {
+    int i = 0;
+
     // 更新装置时间
     device->time = time;
-    
-    device->sample[0] = vma;
-    device->sample[1] = vmb;
-    device->sample[2] = vmc;
-    device->sample[3] = ima;
-    device->sample[4] = imb;
-    device->sample[5] = imc;
-    device->sample[6] = vna;
-    device->sample[7] = vnb;
-    device->sample[8] = vnc;
-    device->sample[9] = ina;
-    device->sample[10] = inb;
-    device->sample[11] = inc;
+
+    for (i = 0; i < 12; i++) {
+        device->sample[i] = input[i];
+    }
 
     // 采样值合位为0, 开位为2 --转换为--> 合位状态为1,开位状态为0
-    device->brkSample[0] = (int)((2-ka)/2);
-    device->brkSample[1] = (int)((2-kb)/2);
-    device->brkSample[2] = (int)((2-kc)/2);
+   for (i = 0; i < 3; i++) {
+        device->brkSample[i] = (int)((2-brk[i])/2);
+   }
+
     
 }
 
